@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block navigation %}
+    <ul class="nav">
+        <li class="active"><a href="{% url campaign_list %}">Active petitions</a></li>
+        <li><a href="{% url petition_faq %}">FAQ</a></li>
+    </ul>
+{% endblock navigation %}
+
+{% block page-header %}
+    <h1>Petitions
+        <small>List of current active petitions</small>
+    </h1>
+{% endblock page-header %}
+
+{% block sidebar %}
+    <h3>Stats</h3>
+    <p>We got {{ campaign_count }} active running campaigns.</p>
+
+{% endblock sidebar %}
+
+{% block content %}
+    <h2>Available campaigns</h2>
+    <ul>
+        {% for campaign in campaigns %}
+            <li><a href="{% url campaign_details campaign.id %}">{{ campaign }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock content %}
+
+

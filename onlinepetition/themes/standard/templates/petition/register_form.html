@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block navigation %}
+    <ul class="nav">
+        <li><a href="{% url campaign_list %}">Active petitions</a></li>
+        <li><a href="{% url petition_faq %}">FAQ</a></li>
+    </ul>
+{% endblock navigation %}
+
+{% block page-header %}
+    <h1>Registration
+        <small>Sign under this campaign here</small>
+    </h1>
+{% endblock page-header %}
+
+{% block sidebar %}
+    <h3>Help</h3>
+    <p>Fill in the form to submit your signature to the campaign. Make sure you check your mailbox afterwards to confirm your signature as a valid one!</p>
+    <h3>Stats</h3>
+    <p>Print some useless stats here maybe :-)</p>
+{% endblock sidebar %}
+
+{% block content %}
+    {% if error_message %}
+        <div class="alert-message error">
+            <a class="close" href="#">×</a>
+            <p><strong>Holy guacamole!</strong> {{  error_message }}</p>
+        </div>
+    {% endif %}
+    
+    <h2>Campagin: <a href="{% url campaign_details campaign.id %}">{{ campaign }}</a></h2>
+
+    <p>{{ campaign.description }}</p>
+
+    <h3>Signature form</h3>
+    {% load uni_form_tags %}
+
+    <form id="{{form.id}}" class="uniForm" action="{% url campaign_register campaign.pk %}"
+          method="post">{% csrf_token %}
+        <fieldset id="{{form.id}}_fieldset" class="inlineLabels">
+            {{ form|as_uni_form }}
+        </fieldset>
+        <input type="submit" class="btn primary xlarge pull-right" value="Register to campaign"/>
+    </form>
+{% endblock content %}

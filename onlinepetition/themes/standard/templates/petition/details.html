@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block navigation %}
+    <ul class="nav">
+        <li><a href="{% url campaign_list %}">Active petitions</a></li>
+        <li><a href="{% url petition_faq %}">FAQ</a></li>
+    </ul>
+{% endblock navigation %}
+
+{% block page-header %}
+    <h1>Petition
+        <small>Details about choosen petition</small>
+    </h1>
+{% endblock page-header %}
+
+{% block sidebar %}
+    <h3>Signup?</h3>
+    <p>Click below to join this petition!</p>
+    <a href="{% url campaign_register campaign.pk  %}" class="btn primary large">Sign me up!</a>
+
+    <h3>Stats</h3>
+    <p>We got {{ campaign_count }} active running campaigns.</p>
+    <p>This event has now {{ campaign_signatures_count }} signatures, and {{ campaign_signatures_notverified_count }} signature waiting for being verified!</p>
+{% endblock sidebar %}
+
+{% block content %}
+    <h2>Campaign: <a href="{% url campaign_details campaign.id %}">{{ campaign }}</a></h2>
+    <p>{{ campaign.description }}</p>
+
+    <h3>List of users already who have signed</h3>
+
+    {% if campaign.signatures %}
+        <ol>
+        {% for email in campaign.signatures %}
+            <li>{{ email }}</li>
+        {% endfor %}
+        </ol>
+    {% else %}
+        <p>Noone has yet registered their signature for this campaign!</p>
+    {% endif %}
+{% endblock content %}
+ 
