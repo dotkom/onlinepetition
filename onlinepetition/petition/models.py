@@ -65,7 +65,9 @@ class Signature(models.Model):
         correct_hash = hashlib.sha256(salt + self.email + unicode(self.signed_date)).hexdigest()
         if hash == correct_hash:
             self.is_verified = True
-            return self.save()
+            self.save()
+            return True
+        return False
 
     def send_verify_email(self):
         salt = self.get_salt()

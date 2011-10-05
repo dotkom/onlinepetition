@@ -36,8 +36,7 @@ def details(request, campaign_id):
 
 def register(request, campaign_id):
     try:
-        error_message = None
-        is_registered = None
+        should_redirect = False
         campaign = None
         template = 'petition/register_form.html'
 
@@ -65,7 +64,9 @@ def register(request, campaign_id):
                             # some kind of try / catch around this one?
                             # transaction? yawn.
                             signature_request.send_verify_email()
-
+                            messages.success(request,
+                                             'Registrering mottatt, vennligst bekreft registrering via lenken som kommer pr. epost!')
+                            should_redirect = True
                             #template = 'petition/details.html'
                         except Exception, e:
                             messages.error(request, 'Ooops, something went wrong ..')
@@ -73,6 +74,7 @@ def register(request, campaign_id):
                             print(str(e))
                     else:
                         messages.error(request, 'You are already registered to this campaign!')
+                        should_redirect = True
             else:
                 messages.error(request, 'Blubb blubb, we do require a valid email address for registration')
         else:
@@ -83,17 +85,16 @@ def register(request, campaign_id):
             'campaign': campaign,
             }
 
-        if messages.get_messages(request) > 0:
-            return render_to_response(template, response_dict, context_instance=RequestContext(request))
-        else:
+        if should_redirect:
             return HttpResponseRedirect(reverse(details, args=[campaign.pk]))
+        else:
+            return render_to_response(template, response_dict, context_instance=RequestContext(request))
 
     except Exception, e:
         print(str(e))
 
 
 def activate(request, campaign_id, email, hash):
-
     signature = None
 
     campaign = get_object_or_404(Campaign, pk=campaign_id)
@@ -104,6 +105,8 @@ def activate(request, campaign_id, email, hash):
             if not signature.verify_hash(hash):
                 messages.error(request,
                                'Failed to activate signature, make sure you enter the activation code exactly as in the email!')
+            else:
+                messages.success(request, 'Your signature is now verified and added to the campaign!')
         elif signature.is_verified:
             messagse.warning(request, 'Signature already verified!')
         else:
