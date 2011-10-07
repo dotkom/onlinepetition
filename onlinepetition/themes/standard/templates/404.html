@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Online Petition - 404</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+        body {
+            padding-top: 60px;
+        }
+    </style>
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+</head>
+
+<body>
+
+<div class="topbar">
+    <div class="fill">
+        <div class="container">
+            <a class="brand" href="#">Online Petition</a>
+            <ul class="nav">
+                <li><a href="{% url campaign_list %}">Active petitions</a></li>
+                <li><a href="{% url petition_faq %}">FAQ</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+
+    <!-- Main hero unit for a primary marketing message or call to action -->
+    <div class="hero-unit">
+        <h1>File not found - 404!</h1>
+
+        <p>Sorry, we could not find the file/page you were looking for :-(</p>
+
+        <p><a class="btn primary large" href="http://en.wikipedia.org/wiki/HTTP_404">Learn more &raquo;</a></p>
+    </div>
+
+    <!-- Example row of columns -->
+    <div class="row">
+        <div class="span6">
+            <h2>File/Page supposed to available?</h2>
+
+            <p>You know your free to check out the source code to Online Petition at <a href="https://github.com/dotkom/onlinepetition">GitHub</a>
+                to check if the actual file/page are supposed to be available. If it isn't and you still mean it is supposed to be available..
+                your free to fork the project and contribute with patches :-)
+            <p><a class="btn" href="https://github.com/dotkom/onlinepetition">View GitHub &raquo;</a></p>
+        </div>
+        <div class="span5">
+            <h2>Heading</h2>
+
+            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
+                condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis
+                euismod. Donec sed odio dui. </p>
+
+            <p><a class="btn" href="#">View details &raquo;</a></p>
+        </div>
+        <div class="span5">
+            <h2>Heading</h2>
+
+            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula
+                porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut
+                fermentum massa justo sit amet risus.</p>
+
+            <p><a class="btn" href="#">View details &raquo;</a></p>
+        </div>
+    </div>
+
+    {% include "footer.html" %}
+
+</div>
+<!-- /container -->
+
+</body>
+</html> 
