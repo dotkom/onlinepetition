@@ -8,7 +8,7 @@ class SignatureInline(admin.TabularInline):
 class CampaignAdmin(admin.ModelAdmin):
     list_display = ('title', 'start_date', 'end_date',)
     fieldsets = (
-        (None, {'fields': ('title',)}),
+        (None, {'fields': ('title', 'description',)}),
         ('Registration period', {'fields': ('start_date', 'end_date')}),
         ('Requirements', {'fields': ('valid_domains',)}),
     )
