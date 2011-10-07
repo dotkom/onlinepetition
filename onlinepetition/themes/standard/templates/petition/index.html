@@ -15,12 +15,12 @@
 
 {% block sidebar %}
     <h3>Stats</h3>
-    <p>We got {{ campaign_count }} active running campaigns.</p>
+    <p>We got {{ campaign_count }} active running petition(s).</p>
 
 {% endblock sidebar %}
 
 {% block content %}
-    <h2>Available campaigns</h2>
+    <h2>Available petitions</h2>
     <ul>
         {% for campaign in campaigns %}
             <li><a href="{% url campaign_details campaign.id %}">{{ campaign }}</a></li>
