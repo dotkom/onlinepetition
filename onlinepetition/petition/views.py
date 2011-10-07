@@ -1,5 +1,4 @@
 import datetime
-from base64 import b64decode
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
@@ -8,7 +7,7 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.contrib import messages
 from petition.forms import CampaignRegistrationForm
 
-from petition.models import Campaign, Signature
+from petition.models import Campaign, Signature, uri_b64decode
 
 def list(request):
     running_campaigns = Campaign.objects.filter(start_date__lte=datetime.date.today(), end_date__gte=datetime.date.today())
@@ -102,7 +101,7 @@ def activate(request, campaign_id, email, hash):
     campaign = get_object_or_404(Campaign, pk=campaign_id)
 
     try:
-        signature = Signature.objects.get(email=b64decode(email), campaign=campaign)
+        signature = Signature.objects.get(email=uri_b64decode(email), campaign=campaign)
         if signature and not signature.is_verified:
             if not signature.verify_hash(hash):
                 messages.error(request,
@@ -110,7 +109,7 @@ def activate(request, campaign_id, email, hash):
             else:
                 messages.success(request, 'Your signature is now verified and added to the campaign!')
         elif signature.is_verified:
-            messagse.warning(request, 'Signature already verified!')
+            messages.warning(request, 'Signature already verified!')
         else:
             messages.error(request, 'Failed to find signature to activate!')
 

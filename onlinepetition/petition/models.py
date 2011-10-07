@@ -1,7 +1,7 @@
 import datetime
 import hashlib
 
-from base64 import b64encode
+from base64 import urlsafe_b64encode, urlsafe_b64decode
 
 from django.core.urlresolvers import reverse
 from django.core.mail import send_mail
@@ -14,6 +14,11 @@ def get_domain_from_email(email):
     alpha_index = email.rfind('@')
     return email[alpha_index + 1:]
 
+def uri_b64encode(s):
+     return urlsafe_b64encode(s).strip('=')
+
+def uri_b64decode(s):
+     return urlsafe_b64decode(s + '=' * (4 - len(s) % 4))
 
 class Domain(models.Model):
     name = models.CharField("domain", max_length=255, unique=True)
@@ -112,7 +117,7 @@ class Signature(models.Model):
                   """.format(self.campaign.title,
                              DEPLOYMENT_ROOT_URL + reverse('campaign_details', args=[self.campaign.pk, ]),
                              DEPLOYMENT_ROOT_URL + reverse('campaign_activate',
-                                                           args=[self.campaign.pk, b64encode(self.email), activate, ])),
+                                                           args=[self.campaign.pk, uri_b64encode(self.email), activate, ])),
                   ONLINE_PETITION_FROM_ADDRESS, (self.email,), fail_silently=False)
 
     class Meta:
