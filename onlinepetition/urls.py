@@ -7,6 +7,8 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     (r'',         include('petition.urls')),
+    (r'^accounts/login/$', 'django_cas.views.login'),
+    (r'^accounts/logout/$', 'django_cas.views.logout'),
     # Examples:
     #url(r'^$', 'petition.views.index', name='index'),
     # url(r'^onlinepetition/', include('onlinepetition.foo.urls')),

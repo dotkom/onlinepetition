@@ -10,7 +10,7 @@ ADMINS = (
 # ('Your Name', 'your_email@example.com'),
 )
 
-DEPLOYMENT_ROOT_URL = 'http://78.91.17.237:8000'
+DEPLOYMENT_ROOT_URL = 'http://127.0.0.1:8000'
 
 ONLINE_PETITION_FROM_ADDRESS = 'dotkom@online.ntnu.no'
 ONLINE_PETITION_SECRET = 'skdmlbn39sdgfsdfkj3s43'
@@ -107,11 +107,19 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django_cas.middleware.CASMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     )
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'django_cas.backends.CASBackend',
+)
 
 ROOT_URLCONF = 'onlinepetition.urls'
 '',
+
+CAS_SERVER_URL = 'https://online.ntnu.no:8443/cas'
+CAS_REDIRECT_URL = DEPLOYMENT_ROOT_URL
 
 THEME_NAME = 'standard'
 
