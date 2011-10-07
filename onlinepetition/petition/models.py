@@ -10,11 +10,26 @@ from django.db import models
 from settings import ONLINE_PETITION_FROM_ADDRESS, ONLINE_PETITION_SECRET, DEPLOYMENT_ROOT_URL
 
 
+def get_domain_from_email(email):
+    alpha_index = email.rfind('@')
+    return email[alpha_index + 1:]
+
+
+class Domain(models.Model):
+    name = models.CharField("domain", max_length=255, unique=True)
+
+    def __unicode__(self):
+        return self.name
+
+
 class Campaign(models.Model):
     title = models.CharField("title", max_length=50)
     description = models.TextField("description")
     start_date = models.DateTimeField("start_date", default=datetime.datetime.now)
     end_date = models.DateTimeField("end_date", default=datetime.datetime.now)
+    valid_domains = models.ManyToManyField(Domain, verbose_name='valid domains',
+                                           help_text='If no domains are chosen, every signature request is accepted.',
+                                           blank=True)
 
     def __unicode__(self):
         return self.title
@@ -44,6 +59,13 @@ class Campaign(models.Model):
         dot_index = field.rfind('.')
 
         return field[:alpha_index] + '@xxxxxxxxxxxxxxxxxxxx' + field[dot_index:]
+
+    def is_valid_domain(self, users_email):
+        valid_domains = Domain.objects.filter(campaign__id=self.id)
+        if len(valid_domains) == 0:
+            return True
+        else:
+            return get_domain_from_email(users_email) in map(lambda x: getattr(x, 'name'), valid_domains)
 
 
 class Signature(models.Model):

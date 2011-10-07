@@ -10,7 +10,7 @@ ADMINS = (
 # ('Your Name', 'your_email@example.com'),
 )
 
-DEPLOYMENT_ROOT_URL = 'http://localhost:8000'
+DEPLOYMENT_ROOT_URL = 'http://78.91.17.237:8000'
 
 ONLINE_PETITION_FROM_ADDRESS = 'dotkom@online.ntnu.no'
 ONLINE_PETITION_SECRET = 'skdmlbn39sdgfsdfkj3s43'
@@ -36,7 +36,7 @@ DATABASES = {
 # timezone as the operating system.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = 'America/Chicago'
+TIME_ZONE = 'Europe/Oslo'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html

@@ -11,7 +11,7 @@ from petition.forms import CampaignRegistrationForm
 from petition.models import Campaign, Signature
 
 def list(request):
-    running_campaigns = Campaign.objects.filter(start_date__gte=datetime.date.today())
+    running_campaigns = Campaign.objects.filter(start_date__lte=datetime.date.today(), end_date__gte=datetime.date.today())
     return render_to_response('petition/index.html',
             {'campaigns': running_campaigns,
              'campaign_count': Campaign.objects.count(), # hmf, need to make it use model  maybe? yawn
@@ -54,7 +54,9 @@ def register(request, campaign_id):
                 if not users_email:
                     messages.error(request, 'Empty email address submited, please submit a valid one')
                 else:
-                    if not campaign.is_registered(users_email):
+                    if not campaign.is_valid_domain(users_email):
+                        messages.error(request, 'Your email is not listed in the alloweded domains that are allowed to participate in this campaign!')
+                    elif not campaign.is_registered(users_email):
                         try:
                             signature_request = Signature()
                             signature_request.email = users_email
@@ -66,7 +68,6 @@ def register(request, campaign_id):
                             signature_request.send_verify_email()
                             messages.success(request,
                                              'Registrering mottatt, vennligst bekreft registrering via lenken som kommer pr. epost!')
-                            should_redirect = True
                             #template = 'petition/details.html'
                         except Exception, e:
                             messages.error(request, 'Ooops, something went wrong ..')
@@ -74,7 +75,8 @@ def register(request, campaign_id):
                             print(str(e))
                     else:
                         messages.error(request, 'You are already registered to this campaign!')
-                        should_redirect = True
+
+                    should_redirect = True
             else:
                 messages.error(request, 'Blubb blubb, we do require a valid email address for registration')
         else:
