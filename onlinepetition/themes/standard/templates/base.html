@@ -64,6 +64,9 @@
 
     </style>
 
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.6.4.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap-alerts.js"></script>
+
     <!-- Le fav and touch icons -->
     <link rel="shortcut icon" href="images/favicon.ico">
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
@@ -103,7 +106,7 @@
             <div class="span10">
                 {% if messages %}
                     {% for message in messages %}
-                        <div class="alert-message {% if message.tags %} {{ message.tags }}{% endif %}">
+                        <div class="alert-message {% if message.tags %} {{ message.tags }}{% endif %}" data-alert="alert">
                             <a class="close" href="#">×</a>
 
                             <p><strong>Holy guacamole!</strong> {{ message }}</p>

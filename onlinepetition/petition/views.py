@@ -101,7 +101,8 @@ def activate(request, campaign_id, email, hash):
     campaign = get_object_or_404(Campaign, pk=campaign_id)
 
     try:
-        signature = Signature.objects.get(email=uri_b64decode(email), campaign=campaign)
+        # required to cast email to str from unicode due to uri_b64decode doesn't like unicode strings.
+        signature = Signature.objects.get(email=uri_b64decode(str(email)), campaign=campaign)
         if signature and not signature.is_verified:
             if not signature.verify_hash(hash):
                 messages.error(request,
