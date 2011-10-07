@@ -9,13 +9,13 @@
 
 {% block page-header %}
     <h1>Registration
-        <small>Sign under this campaign here</small>
+        <small>Sign this petition</small>
     </h1>
 {% endblock page-header %}
 
 {% block sidebar %}
     <h3>Help</h3>
-    <p>Fill in the form to submit your signature to the campaign. Make sure you check your mailbox afterwards to confirm your signature as a valid one!</p>
+    <p>Fill in the form to submit your signature to the petition. Make sure you check your mailbox afterwards to confirm the validity of your signature!</p>
     <h3>Stats</h3>
     <p>Print some useless stats here maybe :-)</p>
 {% endblock sidebar %}
@@ -28,7 +28,7 @@
         </div>
     {% endif %}
     
-    <h2>Campagin: <a href="{% url campaign_details campaign.id %}">{{ campaign }}</a></h2>
+    <h2>Petition: <a href="{% url campaign_details campaign.id %}">{{ campaign }}</a></h2>
 
     <p>{{ campaign.description }}</p>
 
@@ -40,6 +40,6 @@
         <fieldset id="{{form.id}}_fieldset" class="inlineLabels">
             {{ form|as_uni_form }}
         </fieldset>
-        <input type="submit" class="btn primary xlarge pull-right" value="Register to campaign"/>
+        <input type="submit" class="btn primary xlarge pull-right" value="Sign this petition!"/>
     </form>
 {% endblock content %}
