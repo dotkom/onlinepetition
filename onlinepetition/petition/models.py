@@ -121,7 +121,7 @@ class Signature(models.Model):
                   ONLINE_PETITION_FROM_ADDRESS, (self.email,), fail_silently=False)
 
     class Meta:
-        ordering = ['-is_verified', '-signed_date']
+        ordering = ['-is_verified', 'signed_date']
 
 
 
