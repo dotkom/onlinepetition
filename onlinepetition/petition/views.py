@@ -13,7 +13,7 @@ def list(request):
     running_campaigns = Campaign.objects.filter(start_date__lte=datetime.datetime.now(), end_date__gte=datetime.datetime.now())
     return render_to_response('petition/index.html',
             {'campaigns': running_campaigns,
-             'campaign_count': Campaign.objects.count(), # hmf, need to make it use model  maybe? yawn
+             'campaign_count': len(running_campaigns), # hmf, need to make it use model  maybe? yawn
         },
                               context_instance=RequestContext(request))
 
