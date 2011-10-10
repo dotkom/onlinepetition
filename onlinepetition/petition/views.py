@@ -10,7 +10,7 @@ from petition.forms import CampaignRegistrationForm
 from petition.models import Campaign, Signature, uri_b64decode
 
 def list(request):
-    running_campaigns = Campaign.objects.filter(start_date__lte=datetime.date.today(), end_date__gte=datetime.date.today())
+    running_campaigns = Campaign.objects.filter(start_date__lte=datetime.datetime.now(), end_date__gte=datetime.datetime.now())
     return render_to_response('petition/index.html',
             {'campaigns': running_campaigns,
              'campaign_count': Campaign.objects.count(), # hmf, need to make it use model  maybe? yawn
