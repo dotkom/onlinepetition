@@ -1,33 +1,26 @@
 {% extends "base.html" %}
 
-{% block navigation %}
-    <ul class="nav">
-        <li><a href="{% url campaign_list %}">Active petitions</a></li>
-        <li><a href="{% url petition_faq %}">FAQ</a></li>
-    </ul>
-{% endblock navigation %}
+{% block navigation%}
+
+{% endblock navigation%}
+
 
 {% block page-header %}
-    <h1>Petition
-        <small>Details about chosen petition</small>
-    </h1>
+    <h1>{{ campaign }}</h1>
 {% endblock page-header %}
 
 {% block sidebar %}
-    <h3>Sign</h3>
-    <p>Click below to sign this petition!</p>
-    <a href="{% url campaign_register campaign.pk  %}" class="btn primary large">Sign this petition!</a>
+    <p>{{ campaign.description }}</p>
 
-    <h3>Stats</h3>
-    <p>We currently got {{ campaign_count }} active petition(s).</p>
-    <p>This event has {{ campaign_signatures_count }} verified signature(s), and {{ campaign_signatures_notverified_count }} signature(s) to be verified!</p>
+      <a href="{% url campaign_register campaign.pk  %}" class="btn primary large">Signér!</a>
+
+    <h3>Statistikk</h3>
+    <p>Dette arrangemenetet har {{ campaign_signatures_count }} verifiserte signaturer, og {{ campaign_signatures_notverified_count }} signaturer som venter på bekreftelse!</p>
 {% endblock sidebar %}
 
 {% block content %}
-    <h2>Petition: <a href="{% url campaign_details campaign.id %}">{{ campaign }}</a></h2>
-    <p>{{ campaign.description }}</p>
-
-    <h3>List of users already signed:</h3>
+    
+    <h3>Disse har skrevet under på at de ønsker pc på eksamen. Gjør du?</h3>
 
     {% if campaign.signatures %}
         <ol>
