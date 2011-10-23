@@ -99,7 +99,7 @@
                     <button class="btn" type="submit">{% trans "Sign in" %}</button>
                 </form>
             {% else %}
-            <p class="pull-right white-text">{% trans "You are logged in as {{ user }}" %}</p>
+            <p class="pull-right white-text">{% blocktrans %}You are logged in as {{ user }}{% endblocktrans %}</p>
             {% endif %}
         </div>
     </div>

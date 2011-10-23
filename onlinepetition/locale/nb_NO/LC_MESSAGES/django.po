@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-24 00:26+0200\n"
+"POT-Creation-Date: 2011-10-24 00:30+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -98,8 +98,9 @@ msgid "Sign in"
 msgstr "Logg inn"
 
 #: themes/standard/templates/base.html:103
-msgid "You are logged in as {{ user }}"
-msgstr "Du er logget inn som {{ user }}"
+#, python-format
+msgid "You are logged in as %(user)s"
+msgstr "Du er logget inn som %(user)s"
 
 #: themes/standard/templates/footer.html:3
 msgid "Fork my source code at GitHub!"
@@ -116,6 +117,7 @@ msgstr "Underskriftskampanjer"
 
 #: themes/standard/templates/petition/about.html:37
 #: themes/standard/templates/petition/details.html:6
+#: themes/standard/templates/petition/faq.html:6
 #: themes/standard/templates/petition/index.html:6
 #: themes/standard/templates/petition/register_form.html:6
 msgid "Active petitions"
@@ -123,6 +125,7 @@ msgstr "Aktive kampanjer"
 
 #: themes/standard/templates/petition/about.html:38
 #: themes/standard/templates/petition/details.html:7
+#: themes/standard/templates/petition/faq.html:7
 #: themes/standard/templates/petition/faq.html:12
 #: themes/standard/templates/petition/faq.html:21
 #: themes/standard/templates/petition/index.html:7

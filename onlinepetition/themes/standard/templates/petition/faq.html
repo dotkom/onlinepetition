@@ -3,8 +3,8 @@
 
 {% block navigation %}
     <ul class="nav">
-        <li><a href="{% url campaign_list %}">Active petitions</a></li>
-        <li class="active"><a href="{% url petition_faq %}">FAQ</a></li>
+        <li><a href="{% url campaign_list %}">{% trans "Active petitions" %}</a></li>
+        <li class="active"><a href="{% url petition_faq %}">{% trans "FAQ" %}</a></li>
     </ul>
 {% endblock navigation %}
 
