@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-23 23:17+0200\n"
+"POT-Creation-Date: 2011-10-23 23:36+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,8 +19,9 @@ msgstr ""
 
 #: themes/standard/templates/base.html:7
 #: themes/standard/templates/base.html:88
-#: themes/standard/templates/petition/about.html:5
-#: themes/standard/templates/petition/about.html:34
+#: themes/standard/templates/footer.html:3
+#: themes/standard/templates/petition/about.html:6
+#: themes/standard/templates/petition/about.html:35
 msgid "Online Petition"
 msgstr "Online Petition"
 
@@ -32,7 +33,7 @@ msgstr "Logg inn"
 msgid "You are logged in as {{ user }}"
 msgstr "Du er logget inn som {{ user }}"
 
-#: themes/standard/templates/footer.html:2
+#: themes/standard/templates/footer.html:3
 msgid "Fork my source code at GitHub!"
 msgstr "Hent koden på GitHub!"
 
@@ -41,137 +42,158 @@ msgid "Django site admin"
 msgstr "Online Petition Administrasjonsgrensesnitt"
 
 #: themes/standard/templates/admin/base_site.html:7
-#: themes/standard/templates/petition/index.html:11
+#: themes/standard/templates/petition/index.html:12
 msgid "Petitions"
 msgstr "Underskriftskampanjer"
 
-#: themes/standard/templates/petition/about.html:36
-#: themes/standard/templates/petition/details.html:5
-#: themes/standard/templates/petition/index.html:5
-#: themes/standard/templates/petition/register_form.html:5
+#: themes/standard/templates/petition/about.html:37
+#: themes/standard/templates/petition/details.html:6
+#: themes/standard/templates/petition/index.html:6
+#: themes/standard/templates/petition/register_form.html:6
 msgid "Active petitions"
 msgstr "Aktive kampanjer"
 
-#: themes/standard/templates/petition/about.html:37
-#: themes/standard/templates/petition/details.html:6
-#: themes/standard/templates/petition/faq.html:11
-#: themes/standard/templates/petition/faq.html:20
-#: themes/standard/templates/petition/index.html:6
-#: themes/standard/templates/petition/register_form.html:6
+#: themes/standard/templates/petition/about.html:38
+#: themes/standard/templates/petition/details.html:7
+#: themes/standard/templates/petition/faq.html:12
+#: themes/standard/templates/petition/faq.html:21
+#: themes/standard/templates/petition/index.html:7
+#: themes/standard/templates/petition/register_form.html:7
 msgid "FAQ"
 msgstr "OSS"
 
-#: themes/standard/templates/petition/about.html:47
+#: themes/standard/templates/petition/about.html:48
 #, fuzzy
 msgid "Online Petition System"
 msgstr "Online Petition System"
 
-#: themes/standard/templates/petition/about.html:52
+#: themes/standard/templates/petition/about.html:50
+msgid "This is an open source something for online petitons licensed under the"
+msgstr "Dette er et åpent-kildekode-prosjekt lisensiert under"
+
+#: themes/standard/templates/petition/about.html:50
+msgid "Apache2 licence"
+msgstr "Apache2-lisensen"
+
+#: themes/standard/templates/petition/about.html:51
+msgid ""
+"You're free to deploy your own version of OPS and manage your own campaigns "
+"that require petitions."
+msgstr ""
+"Den som ønsker har fri tilgang til å sette opp sin egen versjon av OPS for å "
+"administrere sine egne underskriftskampanjer. "
+
+#: themes/standard/templates/petition/about.html:53
 msgid "Check our wiki at GitHub &raquo"
 msgstr "Les vår wiki på GitHub &raquo"
 
-#: themes/standard/templates/petition/details.html:11
-#: themes/standard/templates/petition/details.html:27
-#: themes/standard/templates/petition/register_form.html:31
+#: themes/standard/templates/petition/details.html:12
+#: themes/standard/templates/petition/details.html:28
+#: themes/standard/templates/petition/register_form.html:32
 msgid "Petition"
 msgstr "Underskriftskampanje"
 
-#: themes/standard/templates/petition/details.html:12
+#: themes/standard/templates/petition/details.html:13
 msgid "Details about chosen petition"
 msgstr "Deltajer om kampanjen"
 
-#: themes/standard/templates/petition/details.html:17
+#: themes/standard/templates/petition/details.html:18
 msgid "Sign"
 msgstr "Signér"
 
-#: themes/standard/templates/petition/details.html:18
+#: themes/standard/templates/petition/details.html:19
 msgid "Click below to sign this petition!"
 msgstr "Klikk under for å signere!"
 
-#: themes/standard/templates/petition/details.html:19
-#: themes/standard/templates/petition/register_form.html:43
+#: themes/standard/templates/petition/details.html:20
+#: themes/standard/templates/petition/register_form.html:44
 msgid "Sign this petition!"
 msgstr "Signér!"
 
-#: themes/standard/templates/petition/details.html:21
-#: themes/standard/templates/petition/index.html:17
-#: themes/standard/templates/petition/register_form.html:19
+#: themes/standard/templates/petition/details.html:22
+#: themes/standard/templates/petition/index.html:18
+#: themes/standard/templates/petition/register_form.html:20
 msgid "Stats"
 msgstr "Statistikk"
 
-#: themes/standard/templates/petition/details.html:22
+#: themes/standard/templates/petition/details.html:23
 msgid "We currently got {{ campaign_count }} active petition(s)."
 msgstr "Vi har for øyeblikket {{ campaign_count }} aktive kampanjer."
 
-#: themes/standard/templates/petition/details.html:23
+#: themes/standard/templates/petition/details.html:24
 msgid ""
 "This event has {{ campaign_signatures_count }} verified signature(s), and "
 "{{ campaign_signatures_notverified_count }} signature(s) to be verified!"
-msgstr "Denne kampanjen har {{ campaign_signatures_count }} verifiserte signaturer, og {{ campaign_signatures_notverified_count }} signaturer som fremdeles ikke er verifiserte!"
+msgstr ""
+"Denne kampanjen har {{ campaign_signatures_count }} verifiserte signaturer, "
+"og {{ campaign_signatures_notverified_count }} signaturer som fremdeles ikke "
+"er verifiserte!"
 
-#: themes/standard/templates/petition/details.html:30
+#: themes/standard/templates/petition/details.html:31
 msgid "List of users already signed"
 msgstr "Brukere som har underskrevet"
 
-#: themes/standard/templates/petition/details.html:39
+#: themes/standard/templates/petition/details.html:40
 msgid "No one has yet registered their signatures for this petition!"
 msgstr "Ingen har skrevet under denne kampanjen ennå!"
 
-#: themes/standard/templates/petition/faq.html:12
+#: themes/standard/templates/petition/faq.html:13
 msgid "Frequently asked questions"
 msgstr "Ofte spurte spørsmål"
 
-#: themes/standard/templates/petition/faq.html:22
+#: themes/standard/templates/petition/faq.html:23
 msgid "Q1. Why so serious?"
 msgstr "Q1. Hvorfor så seriøst?"
 
-#: themes/standard/templates/petition/faq.html:23
+#: themes/standard/templates/petition/faq.html:24
 msgid "A1. Internet is serious business!"
 msgstr "A1. Internet er farlige greier!"
 
-#: themes/standard/templates/petition/faq.html:25
+#: themes/standard/templates/petition/faq.html:26
 msgid "Q2. Who made this system?"
 msgstr "Q2. Hvem har laget dette systemet?"
 
-#: themes/standard/templates/petition/faq.html:26
+#: themes/standard/templates/petition/faq.html:27
 msgid "A2. Some techy freaks at the student union Online, dotKom at NTNU"
 msgstr "A2. Nørds fra dotKom i Linjeforeningen Online ved NTNU"
 
-#: themes/standard/templates/petition/index.html:12
+#: themes/standard/templates/petition/index.html:13
 msgid "List of current active petitions"
 msgstr "Aktive kampanjer"
 
-#: themes/standard/templates/petition/index.html:18
+#: themes/standard/templates/petition/index.html:19
 msgid "We got {{ campaign_count }} active running petition(s)."
 msgstr "Vi har for tiden {{ campaign_count }} aktive kampanjer."
 
-#: themes/standard/templates/petition/index.html:23
+#: themes/standard/templates/petition/index.html:24
 msgid "Available petitions"
 msgstr "Aktive kampanjer"
 
-#: themes/standard/templates/petition/register_form.html:11
+#: themes/standard/templates/petition/register_form.html:12
 msgid "Registration"
 msgstr "Registrering"
 
-#: themes/standard/templates/petition/register_form.html:12
+#: themes/standard/templates/petition/register_form.html:13
 msgid "Sign this petition"
 msgstr "Signér"
 
-#: themes/standard/templates/petition/register_form.html:17
+#: themes/standard/templates/petition/register_form.html:18
 msgid "Help"
 msgstr "Hjelp"
 
-#: themes/standard/templates/petition/register_form.html:18
+#: themes/standard/templates/petition/register_form.html:19
 msgid ""
 "Fill in the form to submit your signature to the petition. Make sure you "
 "check your mailbox afterwards to confirm the validity of your signature!"
-msgstr "Fyll inn skjemaet for å signére kampanjen. Pass på å sjekke eposten din etterpå for å verifisere din signatur!"
+msgstr ""
+"Fyll inn skjemaet for å signére kampanjen. Pass på å sjekke eposten din "
+"etterpå for å verifisere din signatur!"
 
-#: themes/standard/templates/petition/register_form.html:20
+#: themes/standard/templates/petition/register_form.html:21
 msgid "Print some useless stats here maybe :-)"
 msgstr "Printen noen ubrukelige stats her kanskje?"
 
-#: themes/standard/templates/petition/register_form.html:35
+#: themes/standard/templates/petition/register_form.html:36
 msgid "Signature form"
 msgstr "Underskriftsskjema"
 
