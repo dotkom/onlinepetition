@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-24 00:09+0200\n"
+"POT-Creation-Date: 2011-10-24 00:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -231,8 +231,9 @@ msgid "List of current active petitions"
 msgstr "Aktive kampanjer"
 
 #: themes/standard/templates/petition/index.html:19
-msgid "We got {{ campaign_count }} active running petition(s)."
-msgstr "Vi har for tiden {{ campaign_count }} aktive kampanjer."
+#, python-format
+msgid "We got %(campaign_count)s active running petition(s)."
+msgstr "Vi har for tiden %(campaign_count)s aktive kampanjer."
 
 #: themes/standard/templates/petition/index.html:24
 msgid "Available petitions"
