@@ -140,12 +140,12 @@ def mylogin(request):
                 login(request, user)
                 # success
                 messages.success(request, _("You are now logged in!"))
-                return HttpResponseRedirect('/') #TODO: Redirect correctly
+                return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('campaign_list')))
 
     messages.error(request, _("Login failed")) #TODO: Handle reasons for failed login :)
-    return HttpResponseRedirect('/') #TODO: Redirect to correct url
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('campaign_list')))
 
 def mylogout(request):
     logout(request)
     messages.success(request, _("You are now logged out!"))
-    return HttpResponseRedirect('/') #TODO: Fix redirection
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('campaign_list')))
