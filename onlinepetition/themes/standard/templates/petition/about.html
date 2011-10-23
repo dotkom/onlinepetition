@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Online Petition</title>
+    <title>{% trans "Online Petition" %}</title>
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -31,10 +31,10 @@
 <div class="topbar">
     <div class="fill">
         <div class="container">
-            <a class="brand" href="{% url campaign_list %}">Online Petition</a>
+            <a class="brand" href="{% url campaign_list %}">{% trans "Online Petition" %}</a>
             <ul class="nav">
-                <li><a href="{% url campaign_list %}">Active petitions</a></li>
-                <li><a href="{% url petition_faq %}">FAQ</a></li>
+                <li><a href="{% url campaign_list %}">{% trans "Active petitions" %}</a></li>
+                <li><a href="{% url petition_faq %}">{% trans "FAQ" %}</a></li>
             </ul>
         </div>
     </div>
@@ -44,12 +44,12 @@
 
     <!-- Main hero unit for a primary marketing message or call to action -->
     <div class="hero-unit">
-        <h1>Online Petition System</h1>
+        <h1>{% trans "Online Petition System" %}</h1>
 
-        <p>This is an open source something for online petitons licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache2 licence</a>.
-        You're free to deploy your own version of OPS and manage your own campaigns that require petitions. </p>
+        <p>{% trans "This is an open source something for online petitons licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache2 licence</a>.
+        You're free to deploy your own version of OPS and manage your own campaigns that require petitions." %}</p>
 
-        <p><a class="btn primary large" href="https://github.com/dotKom/onlinepetition/wiki">Check our wiki at GitHub &raquo;</a></p>
+        <p><a class="btn primary large" href="https://github.com/dotKom/onlinepetition/wiki">{% trans "Check our wiki at GitHub &raquo" %};</a></p>
     </div>
 
     <!-- Example row of columns -->

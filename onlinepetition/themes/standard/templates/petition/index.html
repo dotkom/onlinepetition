@@ -2,25 +2,25 @@
 
 {% block navigation %}
     <ul class="nav">
-        <li class="active"><a href="{% url campaign_list %}">Active petitions</a></li>
-        <li><a href="{% url petition_faq %}">FAQ</a></li>
+        <li class="active"><a href="{% url campaign_list %}">{% trans "Active petitions" %}</a></li>
+        <li><a href="{% url petition_faq %}">{% trans "FAQ" %}</a></li>
     </ul>
 {% endblock navigation %}
 
 {% block page-header %}
-    <h1>Petitions
-        <small>List of current active petitions</small>
+<h1>{% trans "Petitions" %}
+    <small>{% trans "List of current active petitions" %}</small>
     </h1>
 {% endblock page-header %}
 
 {% block sidebar %}
-    <h3>Stats</h3>
-    <p>We got {{ campaign_count }} active running petition(s).</p>
+    <h3>{% trans "Stats" %}</h3>
+    <p>{% trans "We got {{ campaign_count }} active running petition(s)." %}</p>
 
 {% endblock sidebar %}
 
 {% block content %}
-    <h2>Available petitions</h2>
+    <h2>{% trans "Available petitions" %}</h2>
     <ul>
         {% for campaign in campaigns %}
             <li><a href="{% url campaign_details campaign.id %}">{{ campaign }}</a></li>
