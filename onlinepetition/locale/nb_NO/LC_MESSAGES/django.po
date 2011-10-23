@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-23 23:36+0200\n"
+"POT-Creation-Date: 2011-10-24 00:09+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,74 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: petition/admin.py:14
+msgid "Registration period"
+msgstr "Tidsrom for kampanje"
+
+#: petition/admin.py:15
+msgid "Requirements"
+msgstr "Restriksjoner"
+
+#: petition/models.py:26 petition/models.py:32
+msgid "domain"
+msgstr "domene"
+
+#: petition/models.py:33
+msgid "domains"
+msgstr "domene"
+
+#: petition/models.py:37
+msgid "title"
+msgstr "tittel"
+
+#: petition/models.py:38
+msgid "description"
+msgstr "beskrivelse"
+
+#: petition/models.py:39
+msgid "start_date"
+msgstr "startdato"
+
+#: petition/models.py:40
+msgid "end_date"
+msgstr "sluttdato"
+
+#: petition/models.py:41
+msgid "valid domains"
+msgstr "gyldige domener"
+
+#: petition/models.py:42
+msgid "If no domains are chosen, every signature request is accepted."
+msgstr "derosm ingen domener er valgt blir alle signaturer godtatt"
+
+#: petition/models.py:82
+msgid "campaign"
+msgstr "kampanje"
+
+#: petition/models.py:83
+msgid "campaigns"
+msgstr "kampanjer"
+
+#: petition/models.py:87
+msgid "email"
+msgstr "epost"
+
+#: petition/models.py:89
+msgid "signed_date"
+msgstr "signert dato"
+
+#: petition/models.py:91
+msgid "is_verified"
+msgstr "verifisert"
+
+#: petition/models.py:135
+msgid "signature"
+msgstr "signatur"
+
+#: petition/models.py:136
+msgid "signatures"
+msgstr "signaturer"
 
 #: themes/standard/templates/base.html:7
 #: themes/standard/templates/base.html:88
@@ -63,7 +131,6 @@ msgid "FAQ"
 msgstr "OSS"
 
 #: themes/standard/templates/petition/about.html:48
-#, fuzzy
 msgid "Online Petition System"
 msgstr "Online Petition System"
 
@@ -85,7 +152,7 @@ msgstr ""
 
 #: themes/standard/templates/petition/about.html:53
 msgid "Check our wiki at GitHub &raquo"
-msgstr "Les vår wiki på GitHub &raquo"
+msgstr "Les mer på vår GitHub-wiki &raquo"
 
 #: themes/standard/templates/petition/details.html:12
 #: themes/standard/templates/petition/details.html:28
@@ -117,17 +184,19 @@ msgid "Stats"
 msgstr "Statistikk"
 
 #: themes/standard/templates/petition/details.html:23
-msgid "We currently got {{ campaign_count }} active petition(s)."
-msgstr "Vi har for øyeblikket {{ campaign_count }} aktive kampanjer."
+#, python-format
+msgid "We currently got %(campaign_count)s active petition(s)."
+msgstr "Vi har for øyeblikket %(campaign_count)s aktive kampanjer."
 
 #: themes/standard/templates/petition/details.html:24
+#, python-format
 msgid ""
-"This event has {{ campaign_signatures_count }} verified signature(s), and "
-"{{ campaign_signatures_notverified_count }} signature(s) to be verified!"
+"This event has %(campaign_signatures_count)s verified signature(s), and "
+"%(campaign_signatures_notverified_count)s signature(s) to be verified!"
 msgstr ""
-"Denne kampanjen har {{ campaign_signatures_count }} verifiserte signaturer, "
-"og {{ campaign_signatures_notverified_count }} signaturer som fremdeles ikke "
-"er verifiserte!"
+"Denne kampanjen har %(campaign_signatures_count)s verifiserte signaturer, og "
+"%(campaign_signatures_notverified_count)s signaturer som fremdeles ikke er "
+"verifiserte!"
 
 #: themes/standard/templates/petition/details.html:31
 msgid "List of users already signed"

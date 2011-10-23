@@ -9,6 +9,8 @@ from django.db import models
 
 from settings import ONLINE_PETITION_FROM_ADDRESS, ONLINE_PETITION_SECRET, DEPLOYMENT_ROOT_URL
 
+from django.utils.translation import gettext_lazy as _
+
 
 def get_domain_from_email(email):
     alpha_index = email.rfind('@')
@@ -21,19 +23,23 @@ def uri_b64decode(s):
      return urlsafe_b64decode(s + '=' * (4 - len(s) % 4))
 
 class Domain(models.Model):
-    name = models.CharField("domain", max_length=255, unique=True)
+    name = models.CharField(_("domain"), max_length=255, unique=True)
 
     def __unicode__(self):
         return self.name
+    
+    class Meta:
+        verbose_name = _("domain")
+        verbose_name_plural = _("domains")
 
 
 class Campaign(models.Model):
-    title = models.CharField("title", max_length=50)
-    description = models.TextField("description")
-    start_date = models.DateTimeField("start_date", default=datetime.datetime.now)
-    end_date = models.DateTimeField("end_date", default=datetime.datetime.now)
-    valid_domains = models.ManyToManyField(Domain, verbose_name='valid domains',
-                                           help_text='If no domains are chosen, every signature request is accepted.',
+    title = models.CharField(_("title"), max_length=50)
+    description = models.TextField(_("description"))
+    start_date = models.DateTimeField(_("start_date"), default=datetime.datetime.now)
+    end_date = models.DateTimeField(_("end_date"), default=datetime.datetime.now)
+    valid_domains = models.ManyToManyField(Domain, verbose_name=_('valid domains'),
+                                           help_text=_('If no domains are chosen, every signature request is accepted.'),
                                            blank=True)
 
     def __unicode__(self):
@@ -72,13 +78,17 @@ class Campaign(models.Model):
         else:
             return get_domain_from_email(users_email) in map(lambda x: getattr(x, 'name'), valid_domains)
 
+    class Meta:
+        verbose_name = _("campaign")
+        verbose_name_plural = _("campaigns")
+
 
 class Signature(models.Model):
-    email = models.CharField("email",
+    email = models.CharField(_("email"),
                              max_length=255) # if their longer then this, their problem for having an idiotic email ..
-    signed_date = models.DateTimeField("signed_date", auto_now_add=True)
+    signed_date = models.DateTimeField(_("signed_date"), auto_now_add=True)
     campaign = models.ForeignKey(Campaign)
-    is_verified = models.BooleanField("is_verified", default=False)
+    is_verified = models.BooleanField(_("is_verified"), default=False)
 
     def get_salt(self):
         return hashlib.sha256(
@@ -103,7 +113,7 @@ class Signature(models.Model):
         send_mail('OnlinePetition - Verify signature for campaign ' + self.campaign.title,
                   u"""
                   You (or someone else pretending to be you) have requested to sign
-                  under a petition for "{0:>s}".
+                  a petition for "{0:>s}".
 
                   You can view the petition request at
                   {1:>s}
@@ -122,6 +132,8 @@ class Signature(models.Model):
 
     class Meta:
         ordering = ['-is_verified', 'signed_date']
+        verbose_name = _("signature")
+        verbose_name_plural = _("signatures")
 
 
 
