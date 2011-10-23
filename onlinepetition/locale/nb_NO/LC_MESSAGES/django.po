@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-24 00:30+0200\n"
+"POT-Creation-Date: 2011-10-24 01:03+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -85,6 +85,68 @@ msgstr "signatur"
 msgid "signatures"
 msgstr "signaturer"
 
+#: petition/views.py:46
+msgid "Campaign you tried to register for, doesn't exist."
+msgstr ""
+
+#: petition/views.py:55
+msgid "Empty email address submited, please submit a valid one"
+msgstr ""
+
+#: petition/views.py:58
+msgid ""
+"Your email is not listed in the alloweded domains that are allowed to "
+"participate in this campaign!"
+msgstr ""
+
+#: petition/views.py:70
+msgid ""
+"Your signature is receieved. Please verify it by following the instructions "
+"sent to your email."
+msgstr ""
+
+#: petition/views.py:73
+msgid "Ooops, something went wrong .."
+msgstr ""
+
+#: petition/views.py:77
+msgid "You are already registered to this campaign!"
+msgstr ""
+
+#: petition/views.py:81
+msgid "Blubb blubb, we do require a valid email address for registration"
+msgstr ""
+
+#: petition/views.py:110
+msgid ""
+"Failed to activate signature, make sure you enter the activation code "
+"exactly as in the email!"
+msgstr ""
+
+#: petition/views.py:112
+msgid "Your signature is now verified and added to the campaign!"
+msgstr ""
+
+#: petition/views.py:114
+msgid "Signature already verified!"
+msgstr ""
+
+#: petition/views.py:116 petition/views.py:119
+msgid "Failed to find signature to activate!"
+msgstr ""
+
+#: petition/views.py:142
+msgid "You are now logged in!"
+msgstr "Du er nå logget inn!"
+
+#: petition/views.py:145
+msgid "Login failed"
+msgstr ""
+
+#: petition/views.py:150
+msgid "You are now logged out!"
+msgstr "Du er nå logget ut!"
+
 #: themes/standard/templates/base.html:7
 #: themes/standard/templates/base.html:88
 #: themes/standard/templates/footer.html:3
@@ -99,8 +161,14 @@ msgstr "Logg inn"
 
 #: themes/standard/templates/base.html:103
 #, python-format
-msgid "You are logged in as %(user)s"
+msgid ""
+"You are logged in\n"
+"            as %(user)s"
 msgstr "Du er logget inn som %(user)s"
+
+#: themes/standard/templates/base.html:105
+msgid "Log out"
+msgstr "Logg ut"
 
 #: themes/standard/templates/footer.html:3
 msgid "Fork my source code at GitHub!"

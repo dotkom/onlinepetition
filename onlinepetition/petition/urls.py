@@ -7,6 +7,8 @@ urlpatterns = patterns('petition.views',
     url(r'^(?P<campaign_id>\d+)/activate/(?P<email>\w+)/(?P<hash>\w+)$', 'activate', name='campaign_activate'),
     url(r'about$', 'about', name='petition_about'),
     url(r'faq$', 'faq', name='petition_faq'),
+    url(r'login$', 'mylogin', name='petition_login'),
+    url(r'logout$', 'mylogout', name='petition_logout'),
 )
 
 

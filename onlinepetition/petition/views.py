@@ -3,10 +3,11 @@ from django.core.urlresolvers import reverse
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
-
+from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from petition.forms import CampaignRegistrationForm
+from django.utils.translation import ugettext_lazy as _
 
+from petition.forms import CampaignRegistrationForm
 from petition.models import Campaign, Signature, uri_b64decode
 
 def list(request):
@@ -42,7 +43,7 @@ def register(request, campaign_id):
         try:
             campaign = Campaign.objects.get(pk=campaign_id)
         except Campaign.DoesNotExist:
-            messages.error(request, 'Campaign you tried to register for, doesn\'t exist.')
+            messages.error(request, _('Campaign you tried to register for, doesn\'t exist.'))
 
         if campaign and request.method == 'POST':
             form = CampaignRegistrationForm(request.POST)
@@ -51,10 +52,10 @@ def register(request, campaign_id):
                 users_email = form.cleaned_data['email']
 
                 if not users_email:
-                    messages.error(request, 'Empty email address submited, please submit a valid one')
+                    messages.error(request, _('Empty email address submited, please submit a valid one'))
                 else:
                     if not campaign.is_valid_domain(users_email):
-                        messages.error(request, 'Your email is not listed in the alloweded domains that are allowed to participate in this campaign!')
+                        messages.error(request, _('Your email is not listed in the alloweded domains that are allowed to participate in this campaign!'))
                     elif not campaign.is_registered(users_email):
                         try:
                             signature_request = Signature()
@@ -66,18 +67,18 @@ def register(request, campaign_id):
                             # transaction? yawn.
                             signature_request.send_verify_email()
                             messages.success(request,
-                                             'Registrering mottatt, vennligst bekreft registrering via lenken som kommer pr. epost!')
+                                             _('Your signature is receieved. Please verify it by following the instructions sent to your email.'))
                             #template = 'petition/details.html'
                         except Exception, e:
-                            messages.error(request, 'Ooops, something went wrong ..')
+                            messages.error(request, _('Ooops, something went wrong ..'))
                             signature_request.delete()
                             print(str(e))
                     else:
-                        messages.error(request, 'You are already registered to this campaign!')
+                        messages.error(request, _('You are already registered to this campaign!'))
 
                     should_redirect = True
             else:
-                messages.error(request, 'Blubb blubb, we do require a valid email address for registration')
+                messages.error(request, _('Blubb blubb, we do require a valid email address for registration'))
         else:
             form = CampaignRegistrationForm()
 
@@ -106,16 +107,16 @@ def activate(request, campaign_id, email, hash):
         if signature and not signature.is_verified:
             if not signature.verify_hash(hash):
                 messages.error(request,
-                               'Failed to activate signature, make sure you enter the activation code exactly as in the email!')
+                               _('Failed to activate signature, make sure you enter the activation code exactly as in the email!'))
             else:
-                messages.success(request, 'Your signature is now verified and added to the campaign!')
+                messages.success(request, _('Your signature is now verified and added to the campaign!'))
         elif signature.is_verified:
-            messages.warning(request, 'Signature already verified!')
+            messages.warning(request, _('Signature already verified!'))
         else:
-            messages.error(request, 'Failed to find signature to activate!')
+            messages.error(request, _('Failed to find signature to activate!'))
 
     except Signature.DoesNotExist:
-        messages.error(request, 'Failed to find signature to activate!')
+        messages.error(request, _('Failed to find signature to activate!'))
 
     return HttpResponseRedirect(reverse(details, args=[campaign_id]))
 
@@ -131,3 +132,20 @@ def faq(request):
     return render_to_response('petition/faq.html', {},
                               context_instance=RequestContext(request))
 
+def mylogin(request):
+    if request.method == 'POST':
+        user = authenticate(username=request.POST['username'], password=request.POST['password'])
+        if user is not None:
+            if user.is_active:
+                login(request, user)
+                # success
+                messages.success(request, _("You are now logged in!"))
+                return HttpResponseRedirect('/') #TODO: Redirect correctly
+
+    messages.error(request, _("Login failed")) #TODO: Handle reasons for failed login :)
+    return HttpResponseRedirect('/') #TODO: Redirect to correct url
+
+def mylogout(request):
+    logout(request)
+    messages.success(request, _("You are now logged out!"))
+    return HttpResponseRedirect('/') #TODO: Fix redirection
