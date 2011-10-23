@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-24 01:28+0200\n"
+"POT-Creation-Date: 2011-10-24 01:37+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -101,13 +101,17 @@ msgstr "Tom epost-adresse, prøv igjen"
 msgid ""
 "Your email is not listed in the alloweded domains that are allowed to "
 "participate in this campaign!"
-msgstr "Eposten din tilhører ikke et av de forhåndsgodkjente domenene. Du er nok ikke i målgruppen for denne kampanjen."
+msgstr ""
+"Eposten din tilhører ikke et av de forhåndsgodkjente domenene. Du er nok "
+"ikke i målgruppen for denne kampanjen."
 
 #: petition/views.py:74
 msgid ""
 "Your signature is receieved. Please verify it by following the instructions "
 "sent to your email."
-msgstr "Din signatur er mottatt. Venligst følg instruksjonene du har mottatt på epost for å verifisere din signatur."
+msgstr ""
+"Din signatur er mottatt. Venligst følg instruksjonene du har mottatt på "
+"epost for å verifisere din signatur."
 
 #: petition/views.py:77
 msgid "Ooops, something went wrong .."
@@ -125,7 +129,9 @@ msgstr "Vi trenger en fungerende epost-adresse for underskrift"
 msgid ""
 "Failed to activate signature, make sure you enter the activation code "
 "exactly as in the email!"
-msgstr "Kunne ikke verifisere signaturen. Pass på at du skriver inn aktiveringskoden akkurat som oppgitt i eposten du har fått tilsendt."
+msgstr ""
+"Kunne ikke verifisere signaturen. Pass på at du skriver inn aktiveringskoden "
+"akkurat som oppgitt i eposten du har fått tilsendt."
 
 #: petition/views.py:116
 msgid "Your signature is now verified and added to the campaign!"
@@ -346,9 +352,13 @@ msgstr ""
 msgid "Print some useless stats here maybe :-)"
 msgstr "Printen noen ubrukelige stats her kanskje?"
 
-#: themes/standard/templates/petition/register_form.html:36
+#: themes/standard/templates/petition/register_form.html:37
 msgid "Signature form"
 msgstr "Underskriftsskjema"
+
+#: themes/standard/templates/petition/register_form.html:47
+msgid "This campaign is closed"
+msgstr "Denne kampanjen er stengt"
 
 #~ msgid "Norwegian"
 #~ msgstr "Norsk"

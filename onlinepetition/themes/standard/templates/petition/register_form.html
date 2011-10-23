@@ -33,14 +33,17 @@
 
     <p>{{ campaign.description }}</p>
 
-    <h3>{% trans "Signature form" %}</h3>
-    {% load uni_form_tags %}
-
-    <form id="{{form.id}}" class="uniForm" action="{% url campaign_register campaign.pk %}"
-          method="post">{% csrf_token %}
-        <fieldset id="{{form.id}}_fieldset" class="inlineLabels">
-            {{ form|as_uni_form }}
-        </fieldset>
-        <input type="submit" class="btn primary xlarge pull-right" value="{% trans "Sign this petition!" %}"/>
-    </form>
+    {% if campaign.is_active %}
+        <h3>{% trans "Signature form" %}</h3>
+        {% load uni_form_tags %}
+        <form id="{{form.id}}" class="uniForm" action="{% url campaign_register campaign.pk %}"
+              method="post">{% csrf_token %}
+            <fieldset id="{{form.id}}_fieldset" class="inlineLabels">
+                {{ form|as_uni_form }}
+            </fieldset>
+            <input type="submit" class="btn primary xlarge pull-right" value="{% trans "Sign this petition!" %}"/>
+        </form>
+    {% else %}
+        <h3>{% trans "This campaign is closed" %}</h3>
+    {% endif %}
 {% endblock content %}
