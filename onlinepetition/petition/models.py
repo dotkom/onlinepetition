@@ -55,7 +55,8 @@ class Campaign(models.Model):
 
     @property
     def active_campaigns_count(self):
-        return Campaign.objects.count()
+        return Campaign.objects.filter(start_date__lte=datetime.datetime.now(), 
+                                       end_date__gte=datetime.datetime.now()).count()
 
     @property
     def active_signatures_count(self):
