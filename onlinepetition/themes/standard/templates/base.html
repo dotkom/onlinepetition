@@ -1,8 +1,10 @@
+{% load i18n %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Online Petition</title>
+    <title>{% trans "Online Petition" %}</title>
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -83,7 +85,7 @@
 <div class="topbar">
     <div class="fill">
         <div class="container">
-            <a class="brand" href="{% url campaign_list %}">Online Petition</a>
+            <a class="brand" href="{% url campaign_list %}">{% trans "Online Petition" %}</a>
             {% block navigation %}
                 Navigation here
             {% endblock navigation %}
@@ -94,10 +96,10 @@
                     {% csrf_token %}
                     <input class="input-small" type="text" placeholder="Adminlogin">
                     <input class="input-small" type="password" placeholder="Password">
-                    <button class="btn" type="submit">Sign in</button>
+                    <button class="btn" type="submit">{% trans "Sign in" %}</button>
                 </form>
             {% else %}
-                <p class="pull-right white-text">You are logged in as {{ user }}</p>
+            <p class="pull-right white-text">{% trans "You are logged in as {{ user }}" %}</p>
             {% endif %}
         </div>
     </div>
@@ -117,7 +119,7 @@
                         <div class="alert-message {% if message.tags %} {{ message.tags }}{% endif %}" data-alert="alert">
                             <a class="close" href="#">×</a>
 
-                            <p><strong>Holy guacamole!</strong> {{ message }}</p>
+                            <p>{{ message }}</p>
                         </div>
                     {% endfor %}
                 {% endif %}
