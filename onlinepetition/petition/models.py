@@ -66,6 +66,10 @@ class Campaign(models.Model):
     def not_verified_signatures_count(self):
         return self.signature_set.filter(is_verified=False).count()
 
+    @property
+    def is_active(self):
+        return self.start_date <= datetime.datetime.now() and self.end_date >= datetime.datetime.now() 
+
     def obscured_field(self, field):
         alpha_index = field.rfind('@')
         dot_index = field.rfind('.')

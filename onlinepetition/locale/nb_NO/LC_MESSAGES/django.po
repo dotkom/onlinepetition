@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-24 01:03+0200\n"
+"POT-Creation-Date: 2011-10-24 01:28+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -57,93 +57,97 @@ msgstr "gyldige domener"
 msgid "If no domains are chosen, every signature request is accepted."
 msgstr "derosm ingen domener er valgt blir alle signaturer godtatt"
 
-#: petition/models.py:82
+#: petition/models.py:87
 msgid "campaign"
 msgstr "kampanje"
 
-#: petition/models.py:83
+#: petition/models.py:88
 msgid "campaigns"
 msgstr "kampanjer"
 
-#: petition/models.py:87
+#: petition/models.py:92
 msgid "email"
 msgstr "epost"
 
-#: petition/models.py:89
+#: petition/models.py:94
 msgid "signed_date"
 msgstr "signert dato"
 
-#: petition/models.py:91
+#: petition/models.py:96
 msgid "is_verified"
 msgstr "verifisert"
 
-#: petition/models.py:135
+#: petition/models.py:140
 msgid "signature"
 msgstr "signatur"
 
-#: petition/models.py:136
+#: petition/models.py:141
 msgid "signatures"
 msgstr "signaturer"
 
 #: petition/views.py:46
 msgid "Campaign you tried to register for, doesn't exist."
-msgstr ""
+msgstr "Kampanjen du prøvde å skrive under på, finnes ikke."
 
-#: petition/views.py:55
+#: petition/views.py:52
+msgid "The chosen campaign is not currently open for new signatures"
+msgstr "Den valgte kampanjen er desverre ikke åpen for nye signaturer"
+
+#: petition/views.py:59
 msgid "Empty email address submited, please submit a valid one"
-msgstr ""
+msgstr "Tom epost-adresse, prøv igjen"
 
-#: petition/views.py:58
+#: petition/views.py:62
 msgid ""
 "Your email is not listed in the alloweded domains that are allowed to "
 "participate in this campaign!"
-msgstr ""
+msgstr "Eposten din tilhører ikke et av de forhåndsgodkjente domenene. Du er nok ikke i målgruppen for denne kampanjen."
 
-#: petition/views.py:70
+#: petition/views.py:74
 msgid ""
 "Your signature is receieved. Please verify it by following the instructions "
 "sent to your email."
-msgstr ""
-
-#: petition/views.py:73
-msgid "Ooops, something went wrong .."
-msgstr ""
+msgstr "Din signatur er mottatt. Venligst følg instruksjonene du har mottatt på epost for å verifisere din signatur."
 
 #: petition/views.py:77
-msgid "You are already registered to this campaign!"
-msgstr ""
+msgid "Ooops, something went wrong .."
+msgstr "Noe gikk galt :/"
 
 #: petition/views.py:81
-msgid "Blubb blubb, we do require a valid email address for registration"
-msgstr ""
+msgid "You are already registered to this campaign!"
+msgstr "Du har allerede signert denne kampanjen."
 
-#: petition/views.py:110
+#: petition/views.py:85
+msgid "Blubb blubb, we do require a valid email address for registration"
+msgstr "Vi trenger en fungerende epost-adresse for underskrift"
+
+#: petition/views.py:114
 msgid ""
 "Failed to activate signature, make sure you enter the activation code "
 "exactly as in the email!"
-msgstr ""
+msgstr "Kunne ikke verifisere signaturen. Pass på at du skriver inn aktiveringskoden akkurat som oppgitt i eposten du har fått tilsendt."
 
-#: petition/views.py:112
+#: petition/views.py:116
 msgid "Your signature is now verified and added to the campaign!"
-msgstr ""
+msgstr "Din signatur er nå verifisert. Takk for bidraget!"
 
-#: petition/views.py:114
+#: petition/views.py:118
 msgid "Signature already verified!"
-msgstr ""
+msgstr "Signaturen er allerede verifisert"
 
-#: petition/views.py:116 petition/views.py:119
+#: petition/views.py:120 petition/views.py:123
 msgid "Failed to find signature to activate!"
-msgstr ""
+msgstr "Kunne ikke finne signaturen som skulle verifiseres."
 
-#: petition/views.py:142
+#: petition/views.py:146
 msgid "You are now logged in!"
 msgstr "Du er nå logget inn!"
 
-#: petition/views.py:145
+#: petition/views.py:149
 msgid "Login failed"
-msgstr ""
+msgstr "Klarte ikke å logge inn"
 
-#: petition/views.py:150
+#: petition/views.py:154
 msgid "You are now logged out!"
 msgstr "Du er nå logget ut!"
 
@@ -226,7 +230,7 @@ msgid "Check our wiki at GitHub &raquo"
 msgstr "Les mer på vår GitHub-wiki &raquo"
 
 #: themes/standard/templates/petition/details.html:12
-#: themes/standard/templates/petition/details.html:28
+#: themes/standard/templates/petition/details.html:33
 #: themes/standard/templates/petition/register_form.html:32
 msgid "Petition"
 msgstr "Underskriftskampanje"
@@ -235,31 +239,39 @@ msgstr "Underskriftskampanje"
 msgid "Details about chosen petition"
 msgstr "Deltajer om kampanjen"
 
-#: themes/standard/templates/petition/details.html:18
+#: themes/standard/templates/petition/details.html:19
 msgid "Sign"
 msgstr "Signér"
 
-#: themes/standard/templates/petition/details.html:19
+#: themes/standard/templates/petition/details.html:20
 msgid "Click below to sign this petition!"
 msgstr "Klikk under for å signere!"
 
-#: themes/standard/templates/petition/details.html:20
+#: themes/standard/templates/petition/details.html:21
 #: themes/standard/templates/petition/register_form.html:44
 msgid "Sign this petition!"
 msgstr "Signér!"
 
-#: themes/standard/templates/petition/details.html:22
+#: themes/standard/templates/petition/details.html:23
+msgid "Closed"
+msgstr "Stengt"
+
+#: themes/standard/templates/petition/details.html:24
+msgid "This petition is closed for new signatures"
+msgstr "Denne kampanjen er stengt for nye signaturer"
+
+#: themes/standard/templates/petition/details.html:27
 #: themes/standard/templates/petition/index.html:18
 #: themes/standard/templates/petition/register_form.html:20
 msgid "Stats"
 msgstr "Statistikk"
 
-#: themes/standard/templates/petition/details.html:23
+#: themes/standard/templates/petition/details.html:28
 #, python-format
 msgid "We currently got %(campaign_count)s active petition(s)."
 msgstr "Vi har for øyeblikket %(campaign_count)s aktive kampanjer."
 
-#: themes/standard/templates/petition/details.html:24
+#: themes/standard/templates/petition/details.html:29
 #, python-format
 msgid ""
 "This event has %(campaign_signatures_count)s verified signature(s), and "
@@ -269,11 +281,11 @@ msgstr ""
 "%(campaign_signatures_notverified_count)s signaturer som fremdeles ikke er "
 "verifiserte!"
 
-#: themes/standard/templates/petition/details.html:31
+#: themes/standard/templates/petition/details.html:36
 msgid "List of users already signed"
 msgstr "Brukere som har underskrevet"
 
-#: themes/standard/templates/petition/details.html:40
+#: themes/standard/templates/petition/details.html:45
 msgid "No one has yet registered their signatures for this petition!"
 msgstr "Ingen har skrevet under denne kampanjen ennå!"
 

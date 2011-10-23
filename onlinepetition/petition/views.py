@@ -48,6 +48,10 @@ def register(request, campaign_id):
         if campaign and request.method == 'POST':
             form = CampaignRegistrationForm(request.POST)
 
+            if not campaign.is_active:
+                messages.warning(request, _('The chosen campaign is not currently open for new signatures'))
+                return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('campaign_list')))
+
             if form.is_valid():
                 users_email = form.cleaned_data['email']
 
