@@ -18,6 +18,13 @@ def list(request):
         },
                               context_instance=RequestContext(request))
 
+def latest(request):
+    campaigns = Campaign.objects.filter(start_date__lte=datetime.datetime.now(),
+                                       end_date__gte=datetime.datetime.now()).reverse()
+    if not campaigns:
+        return list(request)
+        
+    return details(request, campaigns[0].id)
 
 def details(request, campaign_id):
     campaign = get_object_or_404(Campaign, pk=campaign_id)

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-24 01:37+0200\n"
+"POT-Creation-Date: 2011-10-26 21:02+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -85,19 +85,19 @@ msgstr "signatur"
 msgid "signatures"
 msgstr "signaturer"
 
-#: petition/views.py:46
+#: petition/views.py:53
 msgid "Campaign you tried to register for, doesn't exist."
 msgstr "Kampanjen du prøvde å skrive under på, finnes ikke."
 
-#: petition/views.py:52
+#: petition/views.py:59
 msgid "The chosen campaign is not currently open for new signatures"
 msgstr "Den valgte kampanjen er desverre ikke åpen for nye signaturer"
 
-#: petition/views.py:59
+#: petition/views.py:66
 msgid "Empty email address submited, please submit a valid one"
 msgstr "Tom epost-adresse, prøv igjen"
 
-#: petition/views.py:62
+#: petition/views.py:69
 msgid ""
 "Your email is not listed in the alloweded domains that are allowed to "
 "participate in this campaign!"
@@ -105,7 +105,7 @@ msgstr ""
 "Eposten din tilhører ikke et av de forhåndsgodkjente domenene. Du er nok "
 "ikke i målgruppen for denne kampanjen."
 
-#: petition/views.py:74
+#: petition/views.py:81
 msgid ""
 "Your signature is receieved. Please verify it by following the instructions "
 "sent to your email."
@@ -113,19 +113,19 @@ msgstr ""
 "Din signatur er mottatt. Venligst følg instruksjonene du har mottatt på "
 "epost for å verifisere din signatur."
 
-#: petition/views.py:77
+#: petition/views.py:84
 msgid "Ooops, something went wrong .."
 msgstr "Noe gikk galt :/"
 
-#: petition/views.py:81
+#: petition/views.py:88
 msgid "You are already registered to this campaign!"
 msgstr "Du har allerede signert denne kampanjen."
 
-#: petition/views.py:85
+#: petition/views.py:92
 msgid "Blubb blubb, we do require a valid email address for registration"
 msgstr "Vi trenger en fungerende epost-adresse for underskrift"
 
-#: petition/views.py:114
+#: petition/views.py:121
 msgid ""
 "Failed to activate signature, make sure you enter the activation code "
 "exactly as in the email!"
@@ -133,52 +133,45 @@ msgstr ""
 "Kunne ikke verifisere signaturen. Pass på at du skriver inn aktiveringskoden "
 "akkurat som oppgitt i eposten du har fått tilsendt."
 
-#: petition/views.py:116
+#: petition/views.py:123
 msgid "Your signature is now verified and added to the campaign!"
 msgstr "Din signatur er nå verifisert. Takk for bidraget!"
 
-#: petition/views.py:118
+#: petition/views.py:125
 msgid "Signature already verified!"
 msgstr "Signaturen er allerede verifisert"
 
-#: petition/views.py:120 petition/views.py:123
+#: petition/views.py:127 petition/views.py:130
 msgid "Failed to find signature to activate!"
 msgstr "Kunne ikke finne signaturen som skulle verifiseres."
 
-#: petition/views.py:146
+#: petition/views.py:153
 msgid "You are now logged in!"
 msgstr "Du er nå logget inn!"
 
-#: petition/views.py:149
+#: petition/views.py:156
 msgid "Login failed"
 msgstr "Klarte ikke å logge inn"
 
-#: petition/views.py:154
+#: petition/views.py:161
 msgid "You are now logged out!"
 msgstr "Du er nå logget ut!"
 
-#: themes/standard/templates/base.html:7
-#: themes/standard/templates/base.html:88
+#: themes/standard/templates/base.html:8
+#: themes/standard/templates/base.html:95
 #: themes/standard/templates/footer.html:3
 #: themes/standard/templates/petition/about.html:6
 #: themes/standard/templates/petition/about.html:35
 msgid "Online Petition"
 msgstr "Online Petition"
 
-#: themes/standard/templates/base.html:100
-msgid "Sign in"
-msgstr "Logg inn"
+#: themes/standard/templates/base.html:106
+msgid "Norwegian"
+msgstr "Norsk"
 
-#: themes/standard/templates/base.html:103
-#, python-format
-msgid ""
-"You are logged in\n"
-"            as %(user)s"
-msgstr "Du er logget inn som %(user)s"
-
-#: themes/standard/templates/base.html:105
-msgid "Log out"
-msgstr "Logg ut"
+#: themes/standard/templates/base.html:107
+msgid "English"
+msgstr "Engelsk"
 
 #: themes/standard/templates/footer.html:3
 msgid "Fork my source code at GitHub!"
@@ -360,8 +353,13 @@ msgstr "Underskriftsskjema"
 msgid "This campaign is closed"
 msgstr "Denne kampanjen er stengt"
 
-#~ msgid "Norwegian"
-#~ msgstr "Norsk"
+#~ msgid "Sign in"
+#~ msgstr "Logg inn"
 
-#~ msgid "English"
-#~ msgstr "Engelsk"
+#~ msgid ""
+#~ "You are logged in\n"
+#~ "            as %(user)s"
+#~ msgstr "Du er logget inn som %(user)s"
+
+#~ msgid "Log out"
+#~ msgstr "Logg ut"
