@@ -98,20 +98,6 @@
             {% endblock navigation %}
             {% comment %} <form action="{% url django.contrib.auth.views.login %}" class="pull-right">
             {% endcomment %}
-            {% comment %}
-            {% if not user.is_authenticated %}
-            <form action="{% url petition_login %}" class="pull-right" method="POST">
-                    {% csrf_token %}
-                    <input class="input-small" type="text" name="username" placeholder="Adminlogin">
-                    <input class="input-small" type="password" name="password" placeholder="Password">
-                    <button class="btn" type="submit">{% trans "Sign in" %}</button>
-                </form>
-            {% else %}
-            <p class="pull-right white-text">{% blocktrans %}You are logged in
-            as {{ user }}{% endblocktrans %}
-            <a href="{% url petition_logout %}" class="btn">{% trans "Log out" %}</a>
-            {% endif %}
-            {% endcomment %}
             <form class="pull-right" action="/i18n/setlang/" method="post">
                 {% csrf_token %}
                 <input name="next" type="hidden" value="{{ request.path }}" />
@@ -121,8 +107,6 @@
                 </select>
                 <input id="button_to_be_removed" type="submit" value="Go"/>
             </form>
-
-
         </div>
     </div>
 </div>
