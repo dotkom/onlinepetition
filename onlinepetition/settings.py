@@ -42,7 +42,6 @@ TIME_ZONE = 'Europe/Oslo'
 # http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'en-us'
 LANGUAGES = (
-                ('nb_NO', 'Norwegian'),
                 ('nb', 'Norwegian'),
                 ('en_US', 'English'),
             )

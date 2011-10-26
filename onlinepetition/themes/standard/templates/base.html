@@ -1,4 +1,5 @@
 {% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -73,6 +74,12 @@
     <script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.6.4.min.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap-alerts.js"></script>
 
+    <script type="text/javascript">
+       $(document).ready(function() {
+            $('#button_to_be_removed').remove();
+       }); 
+    </script>
+
     <!-- Le fav and touch icons -->
     <link rel="shortcut icon" href="images/favicon.ico">
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
@@ -91,6 +98,7 @@
             {% endblock navigation %}
             {% comment %} <form action="{% url django.contrib.auth.views.login %}" class="pull-right">
             {% endcomment %}
+            {% comment %}
             {% if not user.is_authenticated %}
             <form action="{% url petition_login %}" class="pull-right" method="POST">
                     {% csrf_token %}
@@ -103,6 +111,18 @@
             as {{ user }}{% endblocktrans %}
             <a href="{% url petition_logout %}" class="btn">{% trans "Log out" %}</a>
             {% endif %}
+            {% endcomment %}
+            <form class="pull-right" action="/i18n/setlang/" method="post">
+                {% csrf_token %}
+                <input name="next" type="hidden" value="{{ request.path }}" />
+                <select name="language" onchange="this.form.submit();">
+                    <option value="nb">{% trans 'Norwegian' %}</option>
+                    <option value="en_US" {% ifequal LANGUAGE_CODE "en-us" %}selected{% endifequal %}>{% trans 'English' %}</option>
+                </select>
+                <input id="button_to_be_removed" type="submit" value="Go"/>
+            </form>
+
+
         </div>
     </div>
 </div>
