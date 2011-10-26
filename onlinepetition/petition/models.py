@@ -9,7 +9,7 @@ from django.db import models
 
 from settings import ONLINE_PETITION_FROM_ADDRESS, ONLINE_PETITION_SECRET, DEPLOYMENT_ROOT_URL
 
-from django.utils.translation import gettext_lazy as _
+from django.utils.translation import ugettext_lazy as _
 
 
 def get_domain_from_email(email):
@@ -115,21 +115,21 @@ class Signature(models.Model):
         salt = self.get_salt()
         activate = hashlib.sha256(salt + self.email + unicode(self.signed_date)).hexdigest()
 
-        send_mail('OnlinePetition - Verify signature for campaign ' + self.campaign.title,
-                  u"""
-                  You (or someone else pretending to be you) have requested to sign
-                  a petition for "{0:>s}".
+        send_mail(_('OnlinePetition - Verify signature for campaign ') + self.campaign.title,
+                  _(u"""
+You (or someone else pretending to be you) have requested to sign
+a petition for "{0:>s}".
 
-                  You can view the petition request at
-                  {1:>s}
+You can view the petition request at
+{1:>s}
 
-                  If you still agree to sign this petition, please click the link below
-                  {2:>s}
+If you still agree to sign this petition, please click the link below
+{2:>s}
 
-                  --
-                  OnlinePetition
-                  Automatic email generator
-                  """.format(self.campaign.title,
+--
+OnlinePetition
+Automatic email generator
+""").format(self.campaign.title,
                              DEPLOYMENT_ROOT_URL + reverse('campaign_details', args=[self.campaign.pk, ]),
                              DEPLOYMENT_ROOT_URL + reverse('campaign_activate',
                                                            args=[self.campaign.pk, uri_b64encode(self.email), activate, ])),
