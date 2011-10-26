@@ -98,7 +98,7 @@
             {% endblock navigation %}
             {% comment %} <form action="{% url django.contrib.auth.views.login %}" class="pull-right">
             {% endcomment %}
-            <form class="pull-right" action="/i18n/setlang/" method="post">
+            <form class="pull-right" action="{% url django.views.i18n.set_language %}" method="post">
                 {% csrf_token %}
                 <input name="next" type="hidden" value="{{ request.path }}" />
                 <select name="language" onchange="this.form.submit();">
