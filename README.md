@@ -20,6 +20,14 @@ Derp derp.
 * uncomment the onlinepetition module in settings.py
 * python manage.py migrate
 
+## Update translation strings:
+* Add or change translatable strings in template or python code
+* python manage.py makemessage -l nb_NO to generate keys in norwegian language file
+* Edit locale/nb_NO/LC_MESSAGES/django.po and add your translations
+* python manage.py compilemessages
+
+Your new translations are now ready to use :)
+
 You should now be done :-)
 
 # Note
