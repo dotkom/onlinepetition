@@ -9,9 +9,7 @@
 {% endblock navigation %}
 
 {% block page-header %}
-    <h1>{% trans "Petition" %}
-        <small>{% trans "Details about chosen petition" %}</small>
-    </h1>
+    <h1>{% trans "Petition" %}</h1>
 {% endblock page-header %}
 
 {% block sidebar %}
@@ -30,7 +28,7 @@
 {% endblock sidebar %}
 
 {% block content %}
-    <h2>{% trans "Petition" %}: <a href="{% url campaign_details campaign.id %}">{{ campaign }}</a></h2>
+    <h2><a href="{% url campaign_details campaign.id %}">{{ campaign }}</a></h2>
     <p>{{ campaign.description }}</p>
 
     <h3>{% trans "List of users already signed" %}:</h3>

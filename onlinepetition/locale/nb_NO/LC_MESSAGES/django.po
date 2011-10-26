@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-26 21:02+0200\n"
+"POT-Creation-Date: 2011-10-26 21:32+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -229,48 +229,43 @@ msgid "Check our wiki at GitHub &raquo"
 msgstr "Les mer på vår GitHub-wiki &raquo"
 
 #: themes/standard/templates/petition/details.html:12
-#: themes/standard/templates/petition/details.html:33
 #: themes/standard/templates/petition/register_form.html:32
 msgid "Petition"
 msgstr "Underskriftskampanje"
 
-#: themes/standard/templates/petition/details.html:13
-msgid "Details about chosen petition"
-msgstr "Deltajer om kampanjen"
-
-#: themes/standard/templates/petition/details.html:19
+#: themes/standard/templates/petition/details.html:17
 msgid "Sign"
 msgstr "Signér"
 
-#: themes/standard/templates/petition/details.html:20
+#: themes/standard/templates/petition/details.html:18
 msgid "Click below to sign this petition!"
 msgstr "Klikk under for å signere!"
 
-#: themes/standard/templates/petition/details.html:21
+#: themes/standard/templates/petition/details.html:19
 #: themes/standard/templates/petition/register_form.html:44
 msgid "Sign this petition!"
 msgstr "Signér!"
 
-#: themes/standard/templates/petition/details.html:23
+#: themes/standard/templates/petition/details.html:21
 msgid "Closed"
 msgstr "Stengt"
 
-#: themes/standard/templates/petition/details.html:24
+#: themes/standard/templates/petition/details.html:22
 msgid "This petition is closed for new signatures"
 msgstr "Denne kampanjen er stengt for nye signaturer"
 
-#: themes/standard/templates/petition/details.html:27
+#: themes/standard/templates/petition/details.html:25
 #: themes/standard/templates/petition/index.html:18
 #: themes/standard/templates/petition/register_form.html:20
 msgid "Stats"
 msgstr "Statistikk"
 
-#: themes/standard/templates/petition/details.html:28
+#: themes/standard/templates/petition/details.html:26
 #, python-format
 msgid "We currently got %(campaign_count)s active petition(s)."
 msgstr "Vi har for øyeblikket %(campaign_count)s aktive kampanjer."
 
-#: themes/standard/templates/petition/details.html:29
+#: themes/standard/templates/petition/details.html:27
 #, python-format
 msgid ""
 "This event has %(campaign_signatures_count)s verified signature(s), and "
@@ -280,11 +275,11 @@ msgstr ""
 "%(campaign_signatures_notverified_count)s signaturer som fremdeles ikke er "
 "verifiserte!"
 
-#: themes/standard/templates/petition/details.html:36
+#: themes/standard/templates/petition/details.html:34
 msgid "List of users already signed"
 msgstr "Brukere som har underskrevet"
 
-#: themes/standard/templates/petition/details.html:45
+#: themes/standard/templates/petition/details.html:43
 msgid "No one has yet registered their signatures for this petition!"
 msgstr "Ingen har skrevet under denne kampanjen ennå!"
 
@@ -352,6 +347,9 @@ msgstr "Underskriftsskjema"
 #: themes/standard/templates/petition/register_form.html:47
 msgid "This campaign is closed"
 msgstr "Denne kampanjen er stengt"
+
+#~ msgid "Details about chosen petition"
+#~ msgstr "Deltajer om kampanjen"
 
 #~ msgid "Sign in"
 #~ msgstr "Logg inn"
