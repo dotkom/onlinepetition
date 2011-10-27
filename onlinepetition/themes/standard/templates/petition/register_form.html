@@ -1,24 +1,23 @@
 {% extends "base.html" %}
+{% load markup %}
 {% load i18n %}
 
 {% block navigation %}
     <ul class="nav">
         <li><a href="{% url campaign_list %}">{% trans "Active petitions" %}</a></li>
-        <li><a href="{% url petition_faq %}">{% trans "FAQ" %}</a></li>
+        {% comment %}<li><a href="{% url petition_faq %}">{% trans "FAQ" %}</a></li>{% endcomment %}
     </ul>
 {% endblock navigation %}
 
 {% block page-header %}
-    <h1>{% trans "Registration" %}
-        <small>{% trans "Sign this petition" %}</small>
-    </h1>
+    <h2>{{ campaign }}</h2>
 {% endblock page-header %}
 
 {% block sidebar %}
     <h3>{% trans "Help" %}</h3>
     <p>{% trans "Fill in the form to submit your signature to the petition. Make sure you check your mailbox afterwards to confirm the validity of your signature!" %}</p>
     <h3>{% trans "Stats" %}</h3>
-    <p>{% trans "Print some useless stats here maybe :-)" %}</p>
+    <p>{% blocktrans %}This event has {{ campaign_signatures_count }} verified signature(s), and {{ campaign_signatures_notverified_count }} signature(s) to be verified!{% endblocktrans %}</p>
 {% endblock sidebar %}
 
 {% block content %}
@@ -29,19 +28,19 @@
         </div>
     {% endif %}
     
-    <h2>{% trans "Petition" %}: <a href="{% url campaign_details campaign.id %}">{{ campaign }}</a></h2>
-
-    <p>{{ campaign.description }}</p>
+    <p>{{ campaign.description|markdown }}</p>
 
     {% if campaign.is_active %}
+        <p>&nbsp;</p>
         <h3>{% trans "Signature form" %}</h3>
         {% load uni_form_tags %}
         <form id="{{form.id}}" class="uniForm" action="{% url campaign_register campaign.pk %}"
               method="post">{% csrf_token %}
-            <fieldset id="{{form.id}}_fieldset" class="inlineLabels">
+              {% comment %} TODO: ALIGN disse under hverandre {% endcomment %}
+              <fieldset id="{{form.id}}_fieldset" class="inlineLabels">
                 {{ form|as_uni_form }}
             </fieldset>
-            <input type="submit" class="btn primary xlarge pull-right" value="{% trans "Sign this petition!" %}"/>
+            <input type="submit" class="btn primary xlarge pull-left" value="{% trans "Sign this petition!" %}"/>
         </form>
     {% else %}
         <h3>{% trans "This campaign is closed" %}</h3>

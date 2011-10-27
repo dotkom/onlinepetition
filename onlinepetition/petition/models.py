@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import datetime
 import hashlib
 
@@ -47,7 +49,7 @@ class Campaign(models.Model):
 
     @property
     def signatures(self):
-        return map(lambda x: self.obscured_field(getattr(x, 'email')),
+        return map(lambda x: x.name + " - " + self.obscured_field(getattr(x, 'email')),
                    Signature.objects.filter(campaign=self, is_verified=True))
 
     def is_registered(self, email_to_check_for):
@@ -89,7 +91,8 @@ class Campaign(models.Model):
 
 
 class Signature(models.Model):
-    email = models.CharField(_("email"),
+    name = models.CharField(_("name"), max_length=100)
+    email = models.CharField(_("e-mail"),
                              max_length=255) # if their longer then this, their problem for having an idiotic email ..
     signed_date = models.DateTimeField(_("signed_date"), auto_now_add=True)
     campaign = models.ForeignKey(Campaign)
@@ -97,7 +100,7 @@ class Signature(models.Model):
 
     def get_salt(self):
         return hashlib.sha256(
-            ONLINE_PETITION_SECRET + self.campaign.title + unicode(self.campaign.start_date) + unicode(
+            ONLINE_PETITION_SECRET + unicode(self.campaign.start_date) + unicode(
                 self.campaign.end_date)).hexdigest()
 
 
@@ -115,10 +118,10 @@ class Signature(models.Model):
         salt = self.get_salt()
         activate = hashlib.sha256(salt + self.email + unicode(self.signed_date)).hexdigest()
 
-        send_mail(_('OnlinePetition - Verify signature for campaign ') + self.campaign.title,
+        send_mail(_(u'OnlinePetition - Verify signature for campaign ') + self.campaign.title,
                   _(u"""
 You (or someone else pretending to be you) have requested to sign
-a petition for "{0:>s}".
+a petition for {0:>s}
 
 You can view the petition request at
 {1:>s}
@@ -126,7 +129,7 @@ You can view the petition request at
 If you still agree to sign this petition, please click the link below
 {2:>s}
 
---
+-- 
 OnlinePetition
 Automatic email generator
 """).format(self.campaign.title,

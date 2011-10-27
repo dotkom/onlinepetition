@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import datetime
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
@@ -61,6 +63,7 @@ def register(request, campaign_id):
 
             if form.is_valid():
                 users_email = form.cleaned_data['email']
+                users_name = form.cleaned_data['name']
 
                 if not users_email:
                     messages.error(request, _('Empty email address submited, please submit a valid one'))
@@ -71,6 +74,7 @@ def register(request, campaign_id):
                         try:
                             signature_request = Signature()
                             signature_request.email = users_email
+                            signature_request.name = users_name
                             signature_request.campaign = campaign
                             signature_request.save()
 
@@ -82,6 +86,7 @@ def register(request, campaign_id):
                             #template = 'petition/details.html'
                         except Exception, e:
                             messages.error(request, _('Ooops, something went wrong ..'))
+                            messages.error(request, e)
                             signature_request.delete()
                             print(str(e))
                     else:
@@ -96,6 +101,8 @@ def register(request, campaign_id):
         response_dict = {
             'form': form,
             'campaign': campaign,
+            'campaign_signatures_count': campaign.active_signatures_count,
+            'campaign_signatures_notverified_count': campaign.not_verified_signatures_count,
             }
 
         if should_redirect:
