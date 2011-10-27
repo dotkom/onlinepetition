@@ -76,7 +76,7 @@ class Campaign(models.Model):
         alpha_index = field.rfind('@')
         dot_index = field.rfind('.')
 
-        return field[:alpha_index] + '@xxxxxxxxxxxxxxxxxxxx' + field[dot_index:]
+        return field[:alpha_index] + '@xxxxxxxx' + field[dot_index:]
 
     def is_valid_domain(self, users_email):
         valid_domains = Domain.objects.filter(campaign__id=self.id)
