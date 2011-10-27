@@ -83,7 +83,11 @@ class Campaign(models.Model):
         if len(valid_domains) == 0:
             return True
         else:
-            return get_domain_from_email(users_email) in map(lambda x: getattr(x, 'name'), valid_domains)
+            user_domain = get_domain_from_email(users_email)
+            for valid in valid_domains:
+                if user_domain.endswith(valid.name):
+                    return True
+        return False
 
     class Meta:
         verbose_name = _("campaign")
