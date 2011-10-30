@@ -70,7 +70,7 @@ class Campaign(models.Model):
 
     @property
     def signed_domains(self):
-        return [s.domain for s in self.signature_set.all()]
+        return [s.domain for s in self.signature_set.filter(is_verified=True)]
 
     @property
     def domain_stats(self):

@@ -15,16 +15,16 @@ class SignatureTest(TestCase):
 class CampaignTest(TestCase):
     def setUp(self):
         self.camp1 = Campaign(title="TestCampaign", description="This is a test campaign")
-        self.sign1 = Signature(name="Dag Olav", email="dagolav@prestegarden.com", campaign=self.camp1)
-        self.sign2 = Signature(name="Ol Dagav", email="dagolap@stud.ntnu.no", campaign=self.camp1)
-        self.sign3 = Signature(name="Test Olav", email="dag.olav@prestegarden.com", campaign=self.camp1)
+        self.sign1 = Signature(name="Dag Olav", email="dagolav@prestegarden.com", campaign=self.camp1, is_verified=True)
+        self.sign2 = Signature(name="Ol Dagav", email="dagolap@stud.ntnu.no", campaign=self.camp1, is_verified=True)
+        self.sign3 = Signature(name="Test Olav", email="dag.olav@prestegarden.com", campaign=self.camp1, is_verified=True)
         self.sign1.save()
         self.sign2.save()
         self.sign3.save()
         
         self.lots_of_signatures = []
         for i in xrange(10):
-            sign = Signature(name="Name "+str(i), email="email@"+str(i)+".com", campaign=self.camp1)
+            sign = Signature(name="Name "+str(i), email="email@"+str(i)+".com", campaign=self.camp1, is_verified=True)
             sign.save()
             self.lots_of_signatures.append(sign)
 
@@ -43,13 +43,14 @@ class CampaignTest(TestCase):
     def test_campaign_domain_stats_only_return_top_5_domains(self):
         self.assertEqual(5, len(self.camp1.domain_stats))
 
-class CampaignErrorHandlingTest(TestCase):
-    def test_less_than_5_domains_should_not_crash(self):
-        camp2 = Campaign(title="Test", description="Test")
-        signsingle = Signature(name="TestName", email="test@test.com", campaign=camp2)
-        signsingle.save()
 
-        self.assertEqual(1, len(camp2.domain_stats))
+class CampaignSpecialCasesTests(TestCase):
+    def setUp(self):
+        self.camp2 = Campaign(title="Test", description="Test")
+        self.signsingle = Signature(name="TestName", email="test@test.com", campaign=self.camp2, is_verified=True)
+        self.signsingle.save()
+        self.signsecond = Signature(name="NonVerified", email="test2@test2.com", campaign=self.camp2, is_verified=False)
+        self.signsecond.save()
 
-
-
+    def test_only_verified_signatures_should_count_towards_domain_stats(self):
+        self.assertEqual(1, len(self.camp2.domain_stats))
