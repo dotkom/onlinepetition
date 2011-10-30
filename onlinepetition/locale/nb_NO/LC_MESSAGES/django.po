@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-27 14:01+0200\n"
+"POT-Creation-Date: 2011-10-30 20:05+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,68 +33,67 @@ msgstr "E-post"
 msgid "Name"
 msgstr "Navn"
 
-#: petition/models.py:28 petition/models.py:34 petition/oldmodel.py:28
-#: petition/oldmodel.py:34
+#: petition/models.py:28 petition/models.py:34
 msgid "domain"
 msgstr "domene"
 
-#: petition/models.py:35 petition/oldmodel.py:35
+#: petition/models.py:35
 msgid "domains"
 msgstr "domene"
 
-#: petition/models.py:39 petition/oldmodel.py:39
+#: petition/models.py:39
 msgid "title"
 msgstr "tittel"
 
-#: petition/models.py:40 petition/oldmodel.py:40
+#: petition/models.py:40
 msgid "description"
 msgstr "beskrivelse"
 
-#: petition/models.py:41 petition/oldmodel.py:41
+#: petition/models.py:41
 msgid "start_date"
 msgstr "startdato"
 
-#: petition/models.py:42 petition/oldmodel.py:42
+#: petition/models.py:42
 msgid "end_date"
 msgstr "sluttdato"
 
-#: petition/models.py:43 petition/oldmodel.py:43
+#: petition/models.py:43
 msgid "valid domains"
 msgstr "gyldige domener"
 
-#: petition/models.py:44 petition/oldmodel.py:44
+#: petition/models.py:44
 msgid "If no domains are chosen, every signature request is accepted."
 msgstr "derosm ingen domener er valgt blir alle signaturer godtatt"
 
-#: petition/models.py:89 petition/oldmodel.py:89
+#: petition/models.py:93
 msgid "campaign"
 msgstr "kampanje"
 
-#: petition/models.py:90 petition/oldmodel.py:90
+#: petition/models.py:94
 msgid "campaigns"
 msgstr "kampanjer"
 
-#: petition/models.py:94 petition/oldmodel.py:94
+#: petition/models.py:98
 msgid "name"
 msgstr "navn"
 
-#: petition/models.py:95
+#: petition/models.py:99
 msgid "e-mail"
 msgstr "e-post"
 
-#: petition/models.py:97 petition/oldmodel.py:97
+#: petition/models.py:101
 msgid "signed_date"
 msgstr "signert dato"
 
-#: petition/models.py:99 petition/oldmodel.py:99
+#: petition/models.py:103
 msgid "is_verified"
 msgstr "verifisert"
 
-#: petition/models.py:121 petition/oldmodel.py:121
+#: petition/models.py:125
 msgid "OnlinePetition - Verify signature for campaign "
 msgstr "OnlinePetition - Verifiser din signatur for "
 
-#: petition/models.py:122 petition/oldmodel.py:122
+#: petition/models.py:126
 msgid ""
 "\n"
 "You (or someone else pretending to be you) have requested to sign\n"
@@ -125,59 +124,53 @@ msgstr ""
 "OnlinePetition\n"
 "Automatisk e-postgenerator\n"
 
-#: petition/models.py:143 petition/oldmodel.py:143
+#: petition/models.py:147
 msgid "signature"
 msgstr "signatur"
 
-#: petition/models.py:144 petition/oldmodel.py:144
+#: petition/models.py:148
 msgid "signatures"
 msgstr "signaturer"
 
-#: petition/oldmodel.py:95
-msgid "email"
-msgstr "e-post"
-
-#: petition/views.py:55
+#: petition/views.py:54
 msgid "Campaign you tried to register for, doesn't exist."
 msgstr "Kampanjen du prøvde å skrive under på, finnes ikke."
 
-#: petition/views.py:61
+#: petition/views.py:60
 msgid "The chosen campaign is not currently open for new signatures"
 msgstr "Den valgte kampanjen er desverre ikke åpen for nye signaturer"
 
-#: petition/views.py:69
+#: petition/views.py:68
 msgid "Empty email address submited, please submit a valid one"
 msgstr "Tom e-postadresse, prøv igjen"
 
-#: petition/views.py:72
+#: petition/views.py:71
 msgid ""
-"Your email is not listed in the alloweded domains that are allowed to "
-"participate in this campaign!"
+"Your email is not listed amongst the domains that are allowed to participate "
+"in this campaign!"
 msgstr ""
 "Eposten din tilhører ikke et av de forhåndsgodkjente domenene. Du er nok "
 "ikke i målgruppen for denne kampanjen."
 
-#: petition/views.py:85
+#: petition/views.py:84
 msgid ""
-"Your signature is receieved. Please verify it by following the instructions "
-"sent to your email."
-msgstr ""
-"Din signatur er mottatt. Venligst følg instruksjonene du har mottatt på e-"
-"post for å verifisere din signatur."
+"Your signature is receieved. You MUST click on the link sent to you by email "
+"in order for your signature to be approved."
+msgstr "Din signatur er mottatt. Du har nå fått en epost der du MÅ klikke på verifiseringslenken for at din signatur skal bli godkjent."
 
-#: petition/views.py:88
+#: petition/views.py:87
 msgid "Ooops, something went wrong .."
 msgstr "Noe gikk galt :/"
 
-#: petition/views.py:93
+#: petition/views.py:92
 msgid "You are already registered to this campaign!"
 msgstr "Du har allerede signert denne kampanjen."
 
-#: petition/views.py:97
+#: petition/views.py:96
 msgid "Blubb blubb, we do require a valid email address for registration"
 msgstr "Vi trenger en fungerende e-post-adresse for underskrift"
 
-#: petition/views.py:128
+#: petition/views.py:127
 msgid ""
 "Failed to activate signature, make sure you enter the activation code "
 "exactly as in the email!"
@@ -185,27 +178,27 @@ msgstr ""
 "Kunne ikke verifisere signaturen. Pass på at du skriver inn aktiveringskoden "
 "akkurat som oppgitt i e-posten du har fått tilsendt."
 
-#: petition/views.py:130
+#: petition/views.py:129
 msgid "Your signature is now verified and added to the campaign!"
 msgstr "Din signatur er nå verifisert. Takk for bidraget!"
 
-#: petition/views.py:132
+#: petition/views.py:131
 msgid "Signature already verified!"
 msgstr "Signaturen er allerede verifisert"
 
-#: petition/views.py:134 petition/views.py:137
+#: petition/views.py:133 petition/views.py:136
 msgid "Failed to find signature to activate!"
 msgstr "Kunne ikke finne signaturen som skulle verifiseres."
 
-#: petition/views.py:160
+#: petition/views.py:159
 msgid "You are now logged in!"
 msgstr "Du er nå logget inn!"
 
-#: petition/views.py:163
+#: petition/views.py:162
 msgid "Login failed"
 msgstr "Klarte ikke å logge inn"
 
-#: petition/views.py:168
+#: petition/views.py:167
 msgid "You are now logged out!"
 msgstr "Du er nå logget ut!"
 
@@ -366,6 +359,16 @@ msgstr "Underskriftsskjema"
 #: themes/standard/templates/petition/register_form.html:48
 msgid "This campaign is closed"
 msgstr "Denne kampanjen er stengt"
+
+#~ msgid "email"
+#~ msgstr "e-post"
+
+#~ msgid ""
+#~ "Your signature is receieved. Please verify it by following the "
+#~ "instructions sent to your email."
+#~ msgstr ""
+#~ "Din signatur er mottatt. Venligst følg instruksjonene du har mottatt på e-"
+#~ "post for å verifisere din signatur."
 
 #~ msgid "Petition"
 #~ msgstr "Underskriftskampanje"

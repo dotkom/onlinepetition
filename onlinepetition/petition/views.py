@@ -33,8 +33,7 @@ def details(request, campaign_id):
 
     form = CampaignRegistrationForm() # legge til email?
 
-    return render_to_response('petition/details.html', {
-        'form': form,
+    return render_to_response('petition/details.html', { 'form': form,
         'campaign': campaign,
         'campaign_count': campaign.active_campaigns_count,
         'campaign_signatures_count': campaign.active_signatures_count,
@@ -69,7 +68,7 @@ def register(request, campaign_id):
                     messages.error(request, _('Empty email address submited, please submit a valid one'))
                 else:
                     if not campaign.is_valid_domain(users_email):
-                        messages.error(request, _('Your email is not listed in the alloweded domains that are allowed to participate in this campaign!'))
+                        messages.error(request, _('Your email is not listed amongst the domains that are allowed to participate in this campaign!'))
                     elif not campaign.is_registered(users_email):
                         try:
                             signature_request = Signature()
@@ -82,7 +81,7 @@ def register(request, campaign_id):
                             # transaction? yawn.
                             signature_request.send_verify_email()
                             messages.success(request,
-                                             _('Your signature is receieved. Please verify it by following the instructions sent to your email.'))
+                                             _('Your signature is receieved. You MUST click on the link sent to you by email in order for your signature to be approved.'))
                             #template = 'petition/details.html'
                         except Exception, e:
                             messages.error(request, _('Ooops, something went wrong ..'))
