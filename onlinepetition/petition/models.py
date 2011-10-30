@@ -74,7 +74,7 @@ class Campaign(models.Model):
 
     @property
     def domain_stats(self):
-        return sorted([(domain, self.signed_domains.count(domain)) for domain in set(self.signed_domains)], key=operator.itemgetter(1), reverse=True)
+        return sorted([(domain, self.signed_domains.count(domain)) for domain in set(self.signed_domains)], key=operator.itemgetter(1), reverse=True)[:5]
 
     @property
     def is_active(self):

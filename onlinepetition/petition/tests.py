@@ -21,22 +21,28 @@ class CampaignTest(TestCase):
         self.sign1.save()
         self.sign2.save()
         self.sign3.save()
+        
+        self.lots_of_signatures = []
+        for i in xrange(10):
+            sign = Signature(name="Name "+str(i), email="email@"+str(i)+".com", campaign=self.camp1)
+            sign.save()
+            self.lots_of_signatures.append(sign)
 
 
     def test_campaign_returns_all_signatures(self):
-        self.assertEqual(3, self.camp1.signature_set.count())
+        self.assertEqual(13, self.camp1.signature_set.count())
     
     def test_campaign_returns_all_signature_domain(self):
-        self.assertEqual(3, len(self.camp1.signed_domains))
+        self.assertEqual(13, len(self.camp1.signed_domains))
         self.assertEqual("prestegarden.com", self.camp1.signed_domains[0])
         self.assertEqual("stud.ntnu.no", self.camp1.signed_domains[1])
 
     def test_campaign_return_correct_domain_stats_sorted_correctly(self):
         self.assertEqual(2, self.camp1.domain_stats[0][1])
 
-    def test_campaign_domain_stats_only_return_each_domain_once(self):
+    def test_campaign_domain_stats_only_return_top_5_domains(self):
         print self.camp1.domain_stats
-        self.assertEqual(2, len(self.camp1.domain_stats))
+        self.assertEqual(5, len(self.camp1.domain_stats))
 
 
 
