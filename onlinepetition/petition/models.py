@@ -69,6 +69,10 @@ class Campaign(models.Model):
         return self.signature_set.filter(is_verified=False).count()
 
     @property
+    def signed_domains(self):
+        return [s.domain for s in self.signature_set.all()]
+
+    @property
     def is_active(self):
         return self.start_date <= datetime.datetime.now() and self.end_date >= datetime.datetime.now() 
 
