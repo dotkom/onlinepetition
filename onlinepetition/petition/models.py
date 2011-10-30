@@ -102,6 +102,11 @@ class Signature(models.Model):
     campaign = models.ForeignKey(Campaign)
     is_verified = models.BooleanField(_("is_verified"), default=False)
 
+    @property
+    def domain(self):
+        alpha_index = self.email.rfind('@')
+        return self.email[alpha_index + 1:]
+
     def get_salt(self):
         return hashlib.sha256(
             ONLINE_PETITION_SECRET + unicode(self.campaign.start_date) + unicode(
