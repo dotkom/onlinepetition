@@ -41,8 +41,15 @@ class CampaignTest(TestCase):
         self.assertEqual(2, self.camp1.domain_stats[0][1])
 
     def test_campaign_domain_stats_only_return_top_5_domains(self):
-        print self.camp1.domain_stats
         self.assertEqual(5, len(self.camp1.domain_stats))
+
+class CampaignErrorHandlingTest(TestCase):
+    def test_less_than_5_domains_should_not_crash(self):
+        camp2 = Campaign(title="Test", description="Test")
+        signsingle = Signature(name="TestName", email="test@test.com", campaign=camp2)
+        signsingle.save()
+
+        self.assertEqual(1, len(camp2.domain_stats))
 
 
 
