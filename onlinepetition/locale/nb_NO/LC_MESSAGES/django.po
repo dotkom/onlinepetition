@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-30 20:05+0100\n"
+"POT-Creation-Date: 2011-10-30 21:50+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -65,35 +65,35 @@ msgstr "gyldige domener"
 msgid "If no domains are chosen, every signature request is accepted."
 msgstr "derosm ingen domener er valgt blir alle signaturer godtatt"
 
-#: petition/models.py:93
+#: petition/models.py:101
 msgid "campaign"
 msgstr "kampanje"
 
-#: petition/models.py:94
+#: petition/models.py:102
 msgid "campaigns"
 msgstr "kampanjer"
 
-#: petition/models.py:98
+#: petition/models.py:106
 msgid "name"
 msgstr "navn"
 
-#: petition/models.py:99
+#: petition/models.py:107
 msgid "e-mail"
 msgstr "e-post"
 
-#: petition/models.py:101
+#: petition/models.py:109
 msgid "signed_date"
 msgstr "signert dato"
 
-#: petition/models.py:103
+#: petition/models.py:111
 msgid "is_verified"
 msgstr "verifisert"
 
-#: petition/models.py:125
+#: petition/models.py:138
 msgid "OnlinePetition - Verify signature for campaign "
 msgstr "OnlinePetition - Verifiser din signatur for "
 
-#: petition/models.py:126
+#: petition/models.py:139
 msgid ""
 "\n"
 "You (or someone else pretending to be you) have requested to sign\n"
@@ -124,11 +124,11 @@ msgstr ""
 "OnlinePetition\n"
 "Automatisk e-postgenerator\n"
 
-#: petition/models.py:147
+#: petition/models.py:160
 msgid "signature"
 msgstr "signatur"
 
-#: petition/models.py:148
+#: petition/models.py:161
 msgid "signatures"
 msgstr "signaturer"
 
@@ -156,7 +156,9 @@ msgstr ""
 msgid ""
 "Your signature is receieved. You MUST click on the link sent to you by email "
 "in order for your signature to be approved."
-msgstr "Din signatur er mottatt. Du har nå fått en epost der du MÅ klikke på verifiseringslenken for at din signatur skal bli godkjent."
+msgstr ""
+"Din signatur er mottatt. Du har nå fått en epost der du MÅ klikke på "
+"verifiseringslenken for at din signatur skal bli godkjent."
 
 #: petition/views.py:87
 msgid "Ooops, something went wrong .."
@@ -293,11 +295,15 @@ msgstr ""
 "%(campaign_signatures_notverified_count)s signaturer som fremdeles ikke er "
 "verifiserte!"
 
-#: themes/standard/templates/petition/details.html:41
+#: themes/standard/templates/petition/details.html:36
+msgid "Signatures by domain"
+msgstr "Antall per domene"
+
+#: themes/standard/templates/petition/details.html:48
 msgid "List of users already signed"
 msgstr "Brukere som har underskrevet"
 
-#: themes/standard/templates/petition/details.html:50
+#: themes/standard/templates/petition/details.html:57
 msgid "No one has yet registered their signatures for this petition!"
 msgstr "Ingen har skrevet under denne kampanjen ennå!"
 
