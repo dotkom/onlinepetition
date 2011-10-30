@@ -2,6 +2,7 @@
 
 import datetime
 import hashlib
+import operator
 
 from base64 import urlsafe_b64encode, urlsafe_b64decode
 
@@ -17,7 +18,6 @@ from django.utils.translation import ugettext_lazy as _
 def get_domain_from_email(email):
     alpha_index = email.rfind('@')
     return email[alpha_index + 1:]
-
 def uri_b64encode(s):
      return urlsafe_b64encode(s).strip('=')
 
@@ -71,6 +71,10 @@ class Campaign(models.Model):
     @property
     def signed_domains(self):
         return [s.domain for s in self.signature_set.all()]
+
+    @property
+    def domain_stats(self):
+        return sorted([(domain, self.signed_domains.count(domain)) for domain in set(self.signed_domains)], key=operator.itemgetter(1), reverse=True)
 
     @property
     def is_active(self):
