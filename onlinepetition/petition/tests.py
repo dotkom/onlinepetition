@@ -11,8 +11,8 @@ from petition.models import Signature, Campaign, Domain
 
 class SignatureTest(TestCase):
     def setUp(self):
-        self.sign1 = Signature(name="Dag Olav", email="dagolav@prestegarden.com")
-        self.sign2 = Signature(name="Ol Dagav", email="dagolap@stud.ntnu.no")
+        self.sign1 = Signature.objects.create(name="Dag Olav", email="dagolav@prestegarden.com")
+        self.sign2 = Signature.objects.create(name="Ol Dagav", email="dagolap@stud.ntnu.no")
 
     def test_returns_correct_domain(self):
         self.assertEqual("prestegarden.com", self.sign1.domain)
@@ -20,18 +20,14 @@ class SignatureTest(TestCase):
 
 class CampaignTest(TestCase):
     def setUp(self):
-        self.camp1 = Campaign(title="TestCampaign", description="This is a test campaign")
-        self.sign1 = Signature(name="Dag Olav", email="dagolav@prestegarden.com", campaign=self.camp1, is_verified=True)
-        self.sign2 = Signature(name="Ol Dagav", email="dagolap@stud.ntnu.no", campaign=self.camp1, is_verified=True)
-        self.sign3 = Signature(name="Test Olav", email="dag.olav@prestegarden.com", campaign=self.camp1, is_verified=True)
-        self.sign1.save()
-        self.sign2.save()
-        self.sign3.save()
+        self.camp1 = Campaign.objects.create(title="TestCampaign", description="This is a test campaign")
+        self.sign1 = Signature.objects.create(name="Dag Olav", email="dagolav@prestegarden.com", campaign=self.camp1, is_verified=True)
+        self.sign2 = Signature.objects.create(name="Ol Dagav", email="dagolap@stud.ntnu.no", campaign=self.camp1, is_verified=True)
+        self.sign3 = Signature.objects.create(name="Test Olav", email="dag.olav@prestegarden.com", campaign=self.camp1, is_verified=True)
         
         self.lots_of_signatures = []
         for i in xrange(10):
-            sign = Signature(name="Name "+str(i), email="email@"+str(i)+".com", campaign=self.camp1, is_verified=True)
-            sign.save()
+            sign = Signature.objects.create(name="Name "+str(i), email="email@"+str(i)+".com", campaign=self.camp1, is_verified=True)
             self.lots_of_signatures.append(sign)
 
 
@@ -71,12 +67,30 @@ class DomainTest(TestCase):
 
 class CampaignSpecialCasesTests(TestCase):
     def setUp(self):
-        self.camp2 = Campaign(title="Test", description="Test")
-        self.signsingle = Signature(name="TestName", email="test@test.com", campaign=self.camp2, is_verified=True)
-        self.signsingle.save()
-        self.signsecond = Signature(name="NonVerified", email="test2@test2.com", campaign=self.camp2, is_verified=False)
-        self.signsecond.save()
+        self.camp2 = Campaign.objects.create(title="Test", description="Test")
+        self.signsingle = Signature.objects.create(name="TestName", email="test@test.com", campaign=self.camp2, is_verified=True)
+        self.signsecond = Signature.objects.create(name="NonVerified", email="test2@test2.com", campaign=self.camp2, is_verified=False)
 
     def test_only_verified_signatures_should_count_towards_domain_stats(self):
         self.assertEqual(1, len(self.camp2.domain_stats))
+
+
+class CampaignWithValidDomainsTests(TestCase):
+    def setUp(self):
+        self.camp = Campaign.objects.create(title="Test", description="Test")
+        self.valid_domain = Domain.objects.create(name="ntnu.no")
+
+    def test_all_domains_should_be_counted_if_no_list_of_valid_is_set(self):
+        sign1 = Signature.objects.create(name="From stud ntnu", email="dagolap@stud.ntnu.no", campaign=self.camp, is_verified=True)
+        sign2 = Signature.objects.create(name="From idi ntnu", email="dagolap@idi.ntnu.no", campaign=self.camp, is_verified=True)
+        self.assertEqual(2, len(self.camp.domain_stats))
+
+    def test_only_domains_from_valid_domain_list_is_contained_in_stats(self):
+        self.camp.valid_domains.add(self.valid_domain)
+        sign1 = Signature.objects.create(name="From stud ntnu", email="dagolap@stud.ntnu.no", campaign=self.camp, is_verified=True)
+        sign2 = Signature.objects.create(name="From idi ntnu", email="dagolap@idi.ntnu.no", campaign=self.camp, is_verified=True)
+        domain_in_stats = self.camp.domain_stats[0][0]
+        self.assertEqual(1, len(self.camp.domain_stats))
+        self.assertEqual("ntnu.no", domain_in_stats)
+
 

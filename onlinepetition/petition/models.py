@@ -5,6 +5,7 @@ import hashlib
 import operator
 
 from base64 import urlsafe_b64encode, urlsafe_b64decode
+from collections import defaultdict
 
 from django.core.urlresolvers import reverse
 from django.core.mail import send_mail
@@ -29,6 +30,9 @@ class Domain(models.Model):
 
     def __unicode__(self):
         return self.name
+    
+    def is_satisfied_by(self, domain):
+        return domain.endswith(self.name)
     
     class Meta:
         verbose_name = _("domain")
@@ -74,7 +78,15 @@ class Campaign(models.Model):
 
     @property
     def domain_stats(self):
-        return sorted([(domain, self.signed_domains.count(domain)) for domain in set(self.signed_domains)], key=operator.itemgetter(1), reverse=True)[:5]
+        if self.valid_domains.count() == 0:
+            return sorted([(domain, self.signed_domains.count(domain)) for domain in set(self.signed_domains)], key=operator.itemgetter(1), reverse=True)[:5]
+        result_map = defaultdict(int)
+        for d in self.signed_domains:
+            for vd in self.valid_domains.all():
+                if vd.is_satisfied_by(d):
+                    result_map[vd.name] += 1
+                    break
+        return sorted(result_map.items(), key=operator.itemgetter(0), reverse=True)[:5]
 
     @property
     def is_active(self):
