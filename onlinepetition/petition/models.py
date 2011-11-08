@@ -86,7 +86,7 @@ class Campaign(models.Model):
                 if vd.is_satisfied_by(d):
                     result_map[vd.name] += 1
                     break
-        return sorted(result_map.items(), key=operator.itemgetter(0), reverse=True)[:5]
+        return sorted(result_map.items(), key=operator.itemgetter(1), reverse=True)[:5]
 
     @property
     def is_active(self):
