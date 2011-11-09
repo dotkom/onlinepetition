@@ -79,6 +79,7 @@ class CampaignWithValidDomainsTests(TestCase):
     def setUp(self):
         self.camp = Campaign.objects.create(title="Test", description="Test")
         self.valid_domain = Domain.objects.create(name="ntnu.no")
+        self.valid_subdomain = Domain.objects.create(name="stud.ntnu.no")
 
     def test_all_domains_should_be_counted_if_no_list_of_valid_is_set(self):
         sign1 = Signature.objects.create(name="From stud ntnu", email="dagolap@stud.ntnu.no", campaign=self.camp, is_verified=True)
@@ -93,4 +94,8 @@ class CampaignWithValidDomainsTests(TestCase):
         self.assertEqual(1, len(self.camp.domain_stats))
         self.assertEqual("ntnu.no", domain_in_stats)
 
-
+    def test_statistics_should_count_towards_the_topmost_domain_allowed(self):
+        self.camp.valid_domains.add(self.valid_subdomain)
+        self.camp.valid_domains.add(self.valid_domain)
+        Signature.objects.create(name="Dag Olav", email="dagolap@stud.ntnu.no", campaign=self.camp, is_verified=True)
+        self.assertEqual("ntnu.no", self.camp.domain_stats[0][0])

@@ -82,7 +82,7 @@ class Campaign(models.Model):
             return sorted([(domain, self.signed_domains.count(domain)) for domain in set(self.signed_domains)], key=operator.itemgetter(1), reverse=True)[:5]
         result_map = defaultdict(int)
         for d in self.signed_domains:
-            for vd in self.valid_domains.all():
+            for vd in sorted(self.valid_domains.all(), key=lambda d: d.name.count('.')) :
                 if vd.is_satisfied_by(d):
                     result_map[vd.name] += 1
                     break
