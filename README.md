@@ -10,14 +10,12 @@ Derp derp.
 * source /path/to/virtualenv/onlinepetition/bin/activate
 * pip install Django
 * pip install South
-* pip install django-uni-form
 * pip install ipython
 
 ## Initialize database first time
 
-* comment the onlinepetition module in settings.py and run  python manage.py syncdb
-* python manage.py createsuperuser
-* uncomment the onlinepetition module in settings.py
+* python manage.py syncdb
+* python manage.py createsuperuser (if syncdb didn't prompt you to create one)
 * python manage.py migrate
 
 ## Update translation strings:
