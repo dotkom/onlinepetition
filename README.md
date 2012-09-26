@@ -1,7 +1,6 @@
 #Online Petition
 
 Simple system for registering and validating people signing an online petition.
-Derp derp.
 
 # Install
 
