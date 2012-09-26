@@ -19,7 +19,7 @@
         <h3>{% trans "Sign" %}</h3>
         <p>{% trans "Click below to sign this petition!" %}</p>
         {% endcomment %}
-        <a href="{% url campaign_register campaign.pk  %}" class="btn primary large">{% trans "Sign this petition!" %}</a>
+        <a href="{% url campaign_register campaign.pk  %}" class="btn btn-primary large">{% trans "Sign this petition!" %}</a>
     {% else %}
         <h3>{% trans "Closed" %}</h3>
         <p>{% trans "This petition is closed for new signatures" %}</p>
@@ -33,7 +33,7 @@
     <h3>{% trans "Signatures by domain" %}</h3>
     <p>
         {% for domain, count in campaign.domain_stats %}
-            <b>{{domain}}</b><br \>
+            <b>{{domain}}</b><br />
             {{count}}<br />
         {% endfor %}
     </p>
