@@ -43,7 +43,14 @@
                               <label class="control-label" for="{{ field.auto_id }}">{{ field.label }}</label>
 
                               <div class="controls">
-                                  {{ field }}
+                                  {% if field.auto_id == "id_email" %}
+                                      <div class="input-prepend">
+                                        <span class="add-on">@</span>
+                                        {{ field }}
+                                      </div>
+                                  {% else %}
+                                      {{ field }}
+                                  {% endif %}
 
                                   {% for error in field.errors %}
                                       <span class="help-inline">{{ error }}</span>
