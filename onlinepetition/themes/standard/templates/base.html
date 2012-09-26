@@ -16,7 +16,7 @@
 
     <!-- Le styles -->
     <link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet">
-    <style type="text/css">
+    <style>
             /* Override some defaults */
         html, body {
             background-color: #eee;
@@ -28,13 +28,9 @@
 
         .container > footer p {
             text-align: center; /* center align it with the container */
-        }
-
-        .container {
-            width: 820px; /* downsize our container to make the content feel a bit tighter and more cohesive. NOTE: this removes two full columns from the grid, meaning you only go to 14 columns and not 16. */
-        }
-
             /* The white background content wrapper */
+            }
+
         .content {
             background-color: #fff;
             padding: 20px;
@@ -55,7 +51,7 @@
         }
 
             /* Give a quick and non-cross-browser friendly divider */
-        .content .span4 {
+        .content .span2 {
             margin-left: 0;
             padding-left: 19px;
             border-left: 1px solid #eee;
@@ -68,17 +64,32 @@
         .white-text {
             color: #fff;
         }
-
     </style>
 
-    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.6.4.min.js"></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap-alerts.js"></script>
+    <link href="{{ STATIC_URL }}css/bootstrap-responsive.css" rel="stylesheet">
+    <style>
+        @media (max-width: 979px) {
+            .navbar-fixed-top { margin-bottom: 0;}
+        }
+        @media (max-width: 767px) {
+            .content .span2 {
+                clear: left;
+                border: none;
+                margin-left: 0;
+                padding-left: 0;
+            }
+        }
+    </style>
 
-    <script type="text/javascript">
-       $(document).ready(function() {
-            $('#button_to_be_removed').remove();
-       }); 
-    </script>
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap.js"></script>
+
 
     <!-- Le fav and touch icons -->
     <link rel="shortcut icon" href="images/favicon.ico">
@@ -89,8 +100,8 @@
 
 <body>
 
-<div class="topbar">
-    <div class="fill">
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
         <div class="container">
             <a class="brand" href="{% url campaign_latest %}">{% trans "Online Petition" %}</a>
             {% block navigation %}
@@ -98,7 +109,7 @@
             {% endblock navigation %}
             {% comment %} <form action="{% url django.contrib.auth.views.login %}" class="pull-right">
             {% endcomment %}
-            <form class="pull-right" action="{% url django.views.i18n.set_language %}" method="post">
+            <form class="navbar-search pull-right" action="{% url django.views.i18n.set_language %}" method="post">
                 {% csrf_token %}
                 <input name="next" type="hidden" value="{{ request.path }}" />
                 <select name="language" onchange="this.form.submit();">
@@ -122,9 +133,8 @@
             <div class="span10">
                 {% if messages %}
                     {% for message in messages %}
-                        <div class="alert-message {% if message.tags %} {{ message.tags }}{% endif %}" data-alert="alert">
-                            <a class="close" href="#">×</a>
-
+                        <div class="alert {% if message.tags %} alert-{{ message.tags }}{% endif %}">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
                             <p>{{ message }}</p>
                         </div>
                     {% endfor %}
@@ -133,7 +143,7 @@
                     <h2>Main content</h2>
                 {% endblock content %}
             </div>
-            <div class="span4">
+            <div class="span2">
                 {% block sidebar %}
                     <h3>Secondary content</h3>
                 {% endblock sidebar %}
@@ -145,6 +155,10 @@
 
 </div>
 <!-- /container -->
-
+<script type="text/javascript">
+    $(document).on('ready', function() {
+        $('#button_to_be_removed').remove();
+    });
+</script>
 </body>
 </html> 
