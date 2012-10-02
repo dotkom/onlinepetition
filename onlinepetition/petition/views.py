@@ -80,7 +80,7 @@ def register(request, campaign_id):
                             # some kind of try / catch around this one?
                             # transaction? yawn.
                             signature_request.send_verify_email()
-                            messages.success(request,
+                            messages.warning(request,
                                              _('Your signature is receieved. You MUST click on the link sent to you by email in order for your signature to be approved.'))
                             #template = 'petition/details.html'
                         except Exception, e:
