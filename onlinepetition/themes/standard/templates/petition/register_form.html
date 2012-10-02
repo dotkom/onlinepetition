@@ -22,8 +22,8 @@
 
 {% block content %}
     {% if error_message %}
-        <div class="alert-message error">
-            <a class="close" href="#">×</a>
+        <div class="alert alert-error">
+            <button type="button" class="close" data-dismiss="alert">×</button>
             <p>{{  error_message }}</p>
         </div>
     {% endif %}
@@ -33,14 +33,40 @@
     {% if campaign.is_active %}
         <p>&nbsp;</p>
         <h3>{% trans "Signature form" %}</h3>
-        {% load uni_form_tags %}
-        <form id="{{form.id}}" class="uniForm" action="{% url campaign_register campaign.pk %}"
+
+        <form id="{{form.id}}" class="form-horizontal" action="{% url campaign_register campaign.pk %}"
               method="post">{% csrf_token %}
               {% comment %} TODO: ALIGN disse under hverandre {% endcomment %}
-              <fieldset id="{{form.id}}_fieldset" class="inlineLabels">
-                {{ form|as_uni_form }}
+            <fieldset id="{{form.id}}_fieldset">
+                  {% for field in form.visible_fields %}
+                      <div class="control-group{% if field.errors %} error{% endif %}{% if field.field.required %} required{% endif %}" id="div_{{ field.auto_id }}">
+                              <label class="control-label" for="{{ field.auto_id }}">{{ field.label }}</label>
+
+                              <div class="controls">
+                                  {% if field.auto_id == "id_email" %}
+                                      <div class="input-prepend">
+                                        <span class="add-on">@</span>
+                                        {{ field }}
+                                      </div>
+                                  {% else %}
+                                      {{ field }}
+                                  {% endif %}
+
+                                  {% for error in field.errors %}
+                                      <span class="help-inline">{{ error }}</span>
+                                  {% endfor %}
+
+                                  {% if field.help_text %}
+                                      <p class="help-block">
+                                          {{ field.help_text|safe }}
+                                      </p>
+                                  {% endif %}
+
+                              </div>
+                      </div>
+                  {% endfor %}
             </fieldset>
-            <input type="submit" class="btn primary xlarge pull-left" value="{% trans "Sign this petition!" %}"/>
+            <input type="submit" class="btn btn-primary xlarge pull-left" value="{% trans "Sign this petition!" %}"/>
         </form>
     {% else %}
         <h3>{% trans "This campaign is closed" %}</h3>
